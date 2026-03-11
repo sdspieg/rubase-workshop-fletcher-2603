@@ -38,6 +38,14 @@ Your strategy is **perfect** and will work exactly as intended:
 4. Folder syncs to their account
 ```
 
+### 📱 QR Code for Mobile Access:
+![Dropbox Folder QR Code](dropbox_folder_qr.png)
+
+**This QR code contains the full Dropbox link and works from ANY device!**
+- Students can scan with their phone camera
+- Takes them directly to the Dropbox folder
+- Works on any network with internet access
+
 ### After Day 1 (Tonight):
 ```
 1. Go to Dropbox sharing settings
