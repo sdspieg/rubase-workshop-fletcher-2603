@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuBase Methods Workshop - The Fletcher School</title>
+    <style>
+        :root {
+            --primary-bg: #0a0e27;
+            --secondary-bg: #151b3d;
+            --accent-cyan: #00ffff;
+            --accent-purple: #9400d3;
+            --accent-green: #00ff00;
+            --accent-yellow: #ffd700;
+            --accent-red: #ff6b6b;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --border-color: #2a3f5f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--accent-cyan);
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-nav button {
+            background: transparent;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .header-nav button:hover {
+            background: var(--accent-cyan);
+            color: var(--primary-bg);
+            transform: translateY(-2px);
+        }
+
+        /* Day Progress Bar */
+        .day-progress {
+            background: var(--secondary-bg);
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .day-item {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .day-item.active {
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .day-item.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .day-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .day-item.day1 .day-number { color: var(--accent-cyan); }
+        .day-item.day2 .day-number { color: var(--accent-purple); }
+        .day-item.day3 .day-number { color: var(--accent-green); }
+
+        .day-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .day-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .day-progress-bar {
+            height: 4px;
+            background: var(--border-color);
+            border-radius: 2px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .day-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        /* Main Layout */
+        .main-container {
+            display: flex;
+            min-height: calc(100vh - 200px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: rgba(21, 27, 61, 0.95);
+            border-right: 1px solid var(--border-color);
+            padding: 20px;
+            overflow-y: auto;
+            transition: transform 0.3s;
+        }
+
+        .sidebar.collapsed {
+            transform: translateX(-280px);
+            margin-left: -280px;
+        }
+
+        .module-list {
+            list-style: none;
+        }
+
+        .module-item {
+            margin-bottom: 15px;
+        }
+
+        .module-header {
+            background: var(--secondary-bg);
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .module-header:hover {
+            border-color: var(--accent-cyan);
+            transform: translateX(5px);
+        }
+
+        .module-header.active {
+            background: rgba(0, 255, 255, 0.1);
+            border-color: var(--accent-cyan);
+        }
+
+        .module-title {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .module-status {
+            font-size: 1.2rem;
+        }
+
+        .module-sections {
+            margin-left: 20px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .module-item.expanded .module-sections {
+            display: block;
+        }
+
+        .section-item {
+            padding: 8px 15px;
+            margin: 5px 0;
+            border-left: 2px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .section-item:hover {
+            border-color: var(--accent-cyan);
+            color: var(--text-primary);
+            background: rgba(0, 255, 255, 0.05);
+        }
+
+        .section-item.active {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            background: rgba(0, 255, 255, 0.1);
+        }
+
+        /* Content Area */
+        .content-area {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        /* Welcome Screen */
+        .welcome-screen {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .welcome-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .welcome-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 50px;
+        }
+
+        .quick-start-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .quick-start-card {
+            background: var(--secondary-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .quick-start-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .quick-start-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .quick-start-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .quick-start-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Content Frame */
+        .content-frame {
+            background: rgba(10, 14, 39, 0.95);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            padding: 20px;
+            min-height: 600px;
+        }
+
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .breadcrumb-item {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb-item:hover {
+            color: var(--accent-cyan);
+        }
+
+        .breadcrumb-separator {
+            color: var(--border-color);
+        }
+
+        /* Iframe for content */
+        #contentFrame {
+            width: 100%;
+            height: 700px;
+            border: none;
+            border-radius: 10px;
+            background: var(--primary-bg);
+        }
+
+        /* Mobile Toggle */
+        .sidebar-toggle {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1001;
+            background: var(--accent-cyan);
+            color: var(--primary-bg);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .sidebar-toggle {
+                display: block;
+            }
+
+            .sidebar {
+                position: fixed;
+                z-index: 999;
+                height: 100vh;
+                box-shadow: 5px 0 20px rgba(0,0,0,0.5);
+            }
+
+            .day-progress {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .content-area {
+                padding: 15px;
+            }
+        }
+
+        /* Loading Animation */
+        .loader {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .loader-spinner {
+            border: 4px solid var(--border-color);
+            border-top: 4px solid var(--accent-cyan);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-title">🎓 RuBase Methods Workshop</div>
+        <nav class="header-nav">
+            <button onclick="showHome()">🏠 Home</button>
+            <button onclick="showProgress()">📊 Progress</button>
+            <button onclick="showResources()">📚 Resources</button>
+            <button onclick="showHelp()">❓ Help</button>
+        </nav>
+    </header>
+
+    <!-- Day Progress -->
+    <div class="day-progress">
+        <div class="day-item day1 active" onclick="loadDay(1)">
+            <div class="day-number">1</div>
+            <div class="day-title">DISCOVER</div>
+            <div class="day-subtitle">Finding What You've Been Missing</div>
+            <div class="day-progress-bar">
+                <div class="day-progress-fill" style="width: 25%"></div>
+            </div>
+        </div>
+        <div class="day-item day2" onclick="loadDay(2)">
+            <div class="day-number">2</div>
+            <div class="day-title">FRAME</div>
+            <div class="day-subtitle">Building Rigorous Analytical Pipelines</div>
+            <div class="day-progress-bar">
+                <div class="day-progress-fill" style="width: 0%"></div>
+            </div>
+        </div>
+        <div class="day-item day3 locked" onclick="loadDay(3)">
+            <div class="day-number">3</div>
+            <div class="day-title">ANALYZE</div>
+            <div class="day-subtitle">From Frameworks to Findings</div>
+            <div class="day-progress-bar">
+                <div class="day-progress-fill" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <h3 style="color: var(--accent-cyan); margin-bottom: 20px;">DAY 1: DISCOVER</h3>
+            <ul class="module-list">
+                <li class="module-item">
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <span class="module-title">Welcome & Setup</span>
+                        <span class="module-status">✓</span>
+                    </div>
+                    <div class="module-sections">
+                        <div class="section-item" onclick="loadSection('welcome', 'overview')">Workshop Overview</div>
+                        <div class="section-item" onclick="loadSection('welcome', 'schedule')">3-Day Schedule</div>
+                        <div class="section-item" onclick="loadSection('welcome', 'resources')">Resources & Materials</div>
+                    </div>
+                </li>
+                <li class="module-item">
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <span class="module-title">RuBase: What, Why, How</span>
+                        <span class="module-status">✓</span>
+                    </div>
+                    <div class="module-sections">
+                        <div class="section-item" onclick="loadSection('rubase', 'what')">What is RuBase?</div>
+                        <div class="section-item" onclick="loadSection('rubase', 'why')">Why This Matters</div>
+                        <div class="section-item" onclick="loadSection('rubase', 'how')">How It Works</div>
+                    </div>
+                </li>
+                <li class="module-item expanded">
+                    <div class="module-header active" onclick="toggleModule(this)">
+                        <span class="module-title">Bibliometrics</span>
+                        <span class="module-status">◐</span>
+                    </div>
+                    <div class="module-sections">
+                        <div class="section-item" onclick="loadSection('biblio', 'fundamentals')">Fundamentals</div>
+                        <div class="section-item" onclick="loadSection('biblio', 'lens')">The Lens Platform</div>
+                        <div class="section-item active" onclick="loadSection('biblio', 'openalex')">OpenAlex Explorer</div>
+                    </div>
+                </li>
+                <li class="module-item">
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <span class="module-title">Corpus Building</span>
+                        <span class="module-status">○</span>
+                    </div>
+                    <div class="module-sections">
+                        <div class="section-item" onclick="loadSection('corpus', 'search')">Search Strategy</div>
+                        <div class="section-item" onclick="loadSection('corpus', 'api')">API Mastery</div>
+                        <div class="section-item" onclick="loadSection('corpus', 'data')">Data Management</div>
+                    </div>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area" id="contentArea">
+            <!-- Welcome Screen (default) -->
+            <div class="welcome-screen" id="welcomeScreen">
+                <h1 class="welcome-title">Welcome to RuBase Methods Workshop</h1>
+                <p class="welcome-subtitle">AI-Augmented Research at The Fletcher School</p>
+
+                <div class="quick-start-grid">
+                    <div class="quick-start-card" onclick="loadSection('biblio', 'openalex')">
+                        <div class="quick-start-icon">🔍</div>
+                        <div class="quick-start-title">OpenAlex Explorer</div>
+                        <div class="quick-start-desc">Interactive slides and dashboard for bibliometric analysis</div>
+                    </div>
+                    <div class="quick-start-card" onclick="loadSection('welcome', 'schedule')">
+                        <div class="quick-start-icon">📅</div>
+                        <div class="quick-start-title">Workshop Schedule</div>
+                        <div class="quick-start-desc">Complete 3-day agenda and session times</div>
+                    </div>
+                    <div class="quick-start-card" onclick="loadSection('resources', 'guides')">
+                        <div class="quick-start-icon">📚</div>
+                        <div class="quick-start-title">Documentation</div>
+                        <div class="quick-start-desc">Setup guides, API docs, and tutorials</div>
+                    </div>
+                    <div class="quick-start-card" onclick="loadSection('help', 'troubleshooting')">
+                        <div class="quick-start-icon">🛠️</div>
+                        <div class="quick-start-title">Tech Help</div>
+                        <div class="quick-start-desc">Common issues and quick fixes</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Content Frame (hidden by default) -->
+            <div class="content-frame" id="contentFrame" style="display: none;">
+                <div class="content-header">
+                    <div class="breadcrumb" id="breadcrumb">
+                        <span class="breadcrumb-item" onclick="showHome()">Home</span>
+                        <span class="breadcrumb-separator">›</span>
+                        <span class="breadcrumb-item">Day 1: DISCOVER</span>
+                        <span class="breadcrumb-separator">›</span>
+                        <span class="breadcrumb-item">Bibliometrics</span>
+                        <span class="breadcrumb-separator">›</span>
+                        <span class="breadcrumb-item">OpenAlex Explorer</span>
+                    </div>
+                    <div>
+                        <button onclick="previousSection()" style="margin-right: 10px;">← Previous</button>
+                        <button onclick="nextSection()">Next →</button>
+                    </div>
+                </div>
+                <iframe id="contentIframe" src=""></iframe>
+            </div>
+        </main>
+    </div>
+
+    <!-- Sidebar Toggle (Mobile) -->
+    <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">☰</button>
+
+    <script>
+        // Workshop data structure
+        const WORKSHOP = {
+            currentDay: 1,
+            currentModule: null,
+            currentSection: null,
+
+            days: {
+                1: {
+                    title: 'DISCOVER',
+                    modules: ['welcome', 'rubase', 'biblio', 'corpus']
+                },
+                2: {
+                    title: 'FRAME',
+                    modules: ['taxonomy-theory', 'taxonomy-workshop', 'advanced']
+                },
+                3: {
+                    title: 'ANALYZE',
+                    modules: ['classification', 'visualization', 'outputs']
+                }
+            },
+
+            modules: {
+                'welcome': {
+                    title: 'Welcome & Setup',
+                    presenter: 'Adam',
+                    sections: {
+                        'overview': 'slides/welcome-overview.html',
+                        'schedule': 'slides/welcome-schedule.html',
+                        'resources': 'slides/welcome-resources.html'
+                    }
+                },
+                'rubase': {
+                    title: 'RuBase: What, Why, How',
+                    presenter: 'Stephan',
+                    sections: {
+                        'what': 'slides/rubase-what.html',
+                        'why': 'slides/rubase-why.html',
+                        'how': 'slides/rubase-how.html'
+                    }
+                },
+                'biblio': {
+                    title: 'Bibliometrics',
+                    presenter: 'Adam',
+                    sections: {
+                        'fundamentals': 'slides/biblio-fundamentals.html',
+                        'lens': 'slides/biblio-lens.html',
+                        'openalex': 'modules/openalex/index.html'
+                    }
+                },
+                'corpus': {
+                    title: 'Corpus Building',
+                    presenter: 'Stephan',
+                    sections: {
+                        'search': 'slides/corpus-search.html',
+                        'api': 'slides/corpus-api.html',
+                        'data': 'slides/corpus-data.html'
+                    }
+                }
+            }
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateProgress();
+            checkLocks();
+        });
+
+        // Navigation functions
+        function toggleModule(header) {
+            const moduleItem = header.closest('.module-item');
+            moduleItem.classList.toggle('expanded');
+
+            // Update active states
+            document.querySelectorAll('.module-header').forEach(h => h.classList.remove('active'));
+            if (moduleItem.classList.contains('expanded')) {
+                header.classList.add('active');
+            }
+        }
+
+        function loadSection(moduleId, sectionId) {
+            const module = WORKSHOP.modules[moduleId];
+            if (!module) return;
+
+            const sectionPath = module.sections[sectionId];
+            if (!sectionPath) return;
+
+            // Update current state
+            WORKSHOP.currentModule = moduleId;
+            WORKSHOP.currentSection = sectionId;
+
+            // Hide welcome screen
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('contentFrame').style.display = 'block';
+
+            // Load content
+            const iframe = document.getElementById('contentIframe');
+            iframe.src = sectionPath;
+
+            // Update breadcrumb
+            updateBreadcrumb(moduleId, sectionId);
+
+            // Update sidebar active states
+            updateSidebarStates(moduleId, sectionId);
+
+            // Save progress
+            saveProgress();
+        }
+
+        function updateBreadcrumb(moduleId, sectionId) {
+            const module = WORKSHOP.modules[moduleId];
+            const breadcrumb = document.getElementById('breadcrumb');
+
+            breadcrumb.innerHTML = `
+                <span class="breadcrumb-item" onclick="showHome()">Home</span>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-item">Day ${WORKSHOP.currentDay}: ${WORKSHOP.days[WORKSHOP.currentDay].title}</span>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-item">${module.title}</span>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-item">${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}</span>
+            `;
+        }
+
+        function updateSidebarStates(moduleId, sectionId) {
+            // Clear all active states
+            document.querySelectorAll('.section-item').forEach(item => item.classList.remove('active'));
+
+            // Find and activate current section
+            document.querySelectorAll('.module-item').forEach(item => {
+                const header = item.querySelector('.module-header');
+                const titleElement = header.querySelector('.module-title');
+
+                // Match by module title
+                if (WORKSHOP.modules[moduleId] && titleElement.textContent === WORKSHOP.modules[moduleId].title) {
+                    item.classList.add('expanded');
+                    header.classList.add('active');
+
+                    // Find the section
+                    const sections = item.querySelectorAll('.section-item');
+                    sections.forEach((section, index) => {
+                        const sectionKeys = Object.keys(WORKSHOP.modules[moduleId].sections);
+                        if (sectionKeys[index] === sectionId) {
+                            section.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        function showHome() {
+            document.getElementById('welcomeScreen').style.display = 'block';
+            document.getElementById('contentFrame').style.display = 'none';
+            WORKSHOP.currentModule = null;
+            WORKSHOP.currentSection = null;
+        }
+
+        function loadDay(dayNumber) {
+            if (dayNumber === 2 || dayNumber === 3) {
+                alert(`Day ${dayNumber} will be unlocked on ${dayNumber === 2 ? 'Thursday' : 'Friday'}!`);
+                return;
+            }
+
+            WORKSHOP.currentDay = dayNumber;
+            // Update sidebar with new day's modules
+            updateSidebar(dayNumber);
+        }
+
+        function updateSidebar(dayNumber) {
+            // This would dynamically update the sidebar with the selected day's modules
+            console.log(`Loading Day ${dayNumber} modules...`);
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
+
+        function saveProgress() {
+            const progress = {
+                day: WORKSHOP.currentDay,
+                module: WORKSHOP.currentModule,
+                section: WORKSHOP.currentSection,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem('workshop-progress', JSON.stringify(progress));
+        }
+
+        function loadProgress() {
+            const saved = localStorage.getItem('workshop-progress');
+            if (saved) {
+                const progress = JSON.parse(saved);
+                if (progress.module && progress.section) {
+                    loadSection(progress.module, progress.section);
+                }
+            }
+        }
+
+        function updateProgress() {
+            // Calculate and display progress bars
+            // This would be more sophisticated in production
+        }
+
+        function checkLocks() {
+            // Check date and unlock days accordingly
+            const now = new Date();
+            const day2Date = new Date('2026-03-12');
+            const day3Date = new Date('2026-03-13');
+
+            if (now >= day2Date) {
+                document.querySelector('.day2').classList.remove('locked');
+            }
+            if (now >= day3Date) {
+                document.querySelector('.day3').classList.remove('locked');
+            }
+        }
+
+        function previousSection() {
+            // Navigate to previous section
+            console.log('Previous section');
+        }
+
+        function nextSection() {
+            // Navigate to next section
+            console.log('Next section');
+        }
+
+        function showProgress() {
+            alert('Progress tracking coming soon!');
+        }
+
+        function showResources() {
+            loadSection('resources', 'guides');
+        }
+
+        function showHelp() {
+            loadSection('help', 'troubleshooting');
+        }
+
+        // Load saved progress on startup
+        window.addEventListener('load', loadProgress);
+    </script>
+</body>
+</html>
