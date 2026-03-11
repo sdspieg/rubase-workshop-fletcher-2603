@@ -162,11 +162,36 @@
             padding: 20px;
             overflow-x: auto;
             margin-bottom: 20px;
+            position: relative;
         }
 
         .markdown-content pre code {
             background: transparent;
             padding: 0;
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, var(--bright-cyan), var(--bright-purple));
+            color: var(--dark-bg);
+            border: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .copy-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+        }
+
+        .copy-button.copied {
+            background: linear-gradient(135deg, var(--bright-green), var(--bright-cyan));
         }
 
         .markdown-content a {
@@ -277,6 +302,9 @@
                 document.getElementById('mdContent').className = 'markdown-content';
                 document.getElementById('mdContent').innerHTML = html;
 
+                // Add copy buttons to code blocks
+                addCopyButtons();
+
                 // Update title based on first heading
                 const firstHeading = document.querySelector('.markdown-content h1');
                 if (firstHeading) {
@@ -290,6 +318,59 @@
                     <div style="margin-top: 20px; font-size: 1rem;">File: ${filePath}</div>
                 `;
             }
+        }
+
+        // Add copy buttons to code blocks after markdown is rendered
+        function addCopyButtons() {
+            const codeBlocks = document.querySelectorAll('.markdown-content pre');
+
+            codeBlocks.forEach(pre => {
+                // Skip if button already exists
+                if (pre.querySelector('.copy-button')) return;
+
+                // Create copy button
+                const button = document.createElement('button');
+                button.className = 'copy-button';
+                button.textContent = 'Copy';
+
+                // Add click handler
+                button.addEventListener('click', async () => {
+                    const code = pre.querySelector('code');
+                    const text = code ? code.textContent : pre.textContent;
+
+                    try {
+                        await navigator.clipboard.writeText(text);
+                        button.textContent = 'Copied!';
+                        button.classList.add('copied');
+
+                        setTimeout(() => {
+                            button.textContent = 'Copy';
+                            button.classList.remove('copied');
+                        }, 2000);
+                    } catch (err) {
+                        // Fallback for older browsers
+                        const textarea = document.createElement('textarea');
+                        textarea.value = text;
+                        textarea.style.position = 'fixed';
+                        textarea.style.opacity = '0';
+                        document.body.appendChild(textarea);
+                        textarea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textarea);
+
+                        button.textContent = 'Copied!';
+                        button.classList.add('copied');
+
+                        setTimeout(() => {
+                            button.textContent = 'Copy';
+                            button.classList.remove('copied');
+                        }, 2000);
+                    }
+                });
+
+                pre.style.position = 'relative';
+                pre.appendChild(button);
+            });
         }
 
         // Load the markdown file when page loads
