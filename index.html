@@ -438,7 +438,7 @@
     <div class="day-progress">
         <div class="day-item day1 active" onclick="loadDay(1)">
             <div class="day-number">1</div>
-            <div class="day-title">DISCOVER</div>
+            <div class="day-title">INGEST</div>
             <div class="day-subtitle">Finding What You've Been Missing</div>
             <div class="day-progress-bar">
                 <div class="day-progress-fill" style="width: 25%"></div>
@@ -466,7 +466,7 @@
     <div class="main-container">
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
-            <h3 style="color: var(--accent-cyan); margin-bottom: 20px;">DAY 1: DISCOVER</h3>
+            <h3 style="color: var(--accent-cyan); margin-bottom: 20px;">DAY 1: INGEST</h3>
             <ul class="module-list">
                 <li class="module-item">
                     <div class="module-header" onclick="toggleModule(this)">
@@ -580,7 +580,7 @@
 
             days: {
                 1: {
-                    title: 'DISCOVER',
+                    title: 'INGEST',
                     modules: ['welcome', 'rubase', 'biblio', 'corpus']
                 },
                 2: {
@@ -744,9 +744,9 @@
                 return;
             }
 
-            // When Day 1 is clicked, go directly to OpenAlex welcome slide
+            // When Day 1 is clicked, go to the landing page
             if (dayNumber === 1) {
-                window.location.href = 'modules/openalex/index.html';
+                window.location.href = 'modules/landing/index.html';
                 return;
             }
 
