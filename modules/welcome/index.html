@@ -446,34 +446,47 @@
             <h2 class="slide-title">🚨 CRITICAL: Dropbox Setup</h2>
             <div class="timer">⏰ Do This TODAY!</div>
 
-            <div class="content-container">
-                <div class="action-box">
-                    <div class="action-title">You MUST Do This Before We Break!</div>
-                    <div class="action-steps">
-                        <div class="step">
-                            <span class="step-number">1.</span>
-                            Go to this link during break (6:40 PM)
+            <div class="content-container" style="display: flex; gap: 50px; align-items: center; justify-content: center; padding: 20px;">
+                <div style="flex: 1; max-width: 550px;">
+                    <div class="action-box" style="margin: 0;">
+                        <div class="action-title">You MUST Do This Before We Break!</div>
+                        <div class="action-steps">
+                            <div class="step">
+                                <span class="step-number">1.</span>
+                                Scan QR code or go to this link:
+                            </div>
+                            <div class="code-box" style="font-size: 1.8rem; text-align: center; padding: 25px;">
+                                tinyurl.com/rubase-fletcher
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2.</span>
+                                Sign into YOUR Dropbox account (create one if needed - it's free!)
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3.</span>
+                                Click <span class="highlight">"Add to Dropbox"</span> button
+                            </div>
+                            <div class="step">
+                                <span class="step-number">4.</span>
+                                Verify it syncs to your account
+                            </div>
                         </div>
-                        <div class="code-box">
-                            https://www.dropbox.com/scl/fo/0is0u63ng8vguc5pzkq3w/ANXEY93apqRa0jBjFXW54SM
-                        </div>
-                        <div class="step">
-                            <span class="step-number">2.</span>
-                            Sign into YOUR Dropbox account (create one if needed - it's free!)
-                        </div>
-                        <div class="step">
-                            <span class="step-number">3.</span>
-                            Click <span class="highlight">"Add to Dropbox"</span> button
-                        </div>
-                        <div class="step">
-                            <span class="step-number">4.</span>
-                            Verify it syncs to your account
+                        <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,0,0.1); border: 2px solid var(--bright-yellow); border-radius: 15px;">
+                            <p style="color: var(--bright-yellow); font-size: 1.2rem; font-weight: 700;">
+                                ⚠️ After tonight, the folder becomes PRIVATE!
+                            </p>
                         </div>
                     </div>
-                    <div style="margin-top: 30px; padding: 20px; background: rgba(255,255,0,0.1); border: 2px solid var(--bright-yellow); border-radius: 15px;">
-                        <p style="color: var(--bright-yellow); font-size: 1.3rem; font-weight: 700;">
-                            ⚠️ After tonight, the folder becomes PRIVATE - only those who add it today will have access tomorrow!
-                        </p>
+                </div>
+                <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 25px; margin-right: 20px;">
+                    <div id="qrcode-dropbox" style="background: white; padding: 25px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,255,255,0.3); border: 3px solid var(--bright-cyan);"></div>
+                    <div style="background: var(--dark-accent); padding: 20px; border-radius: 15px; border: 2px solid var(--bright-cyan);">
+                        <div style="color: var(--bright-cyan); font-size: 1.4rem; font-weight: 700; text-align: center; margin-bottom: 10px;">
+                            📱 Scan with Phone
+                        </div>
+                        <div style="font-size: 1.2rem; color: var(--bright-yellow); text-align: center; font-weight: 600;">
+                            tinyurl.com/rubase-fletcher
+                        </div>
                     </div>
                 </div>
             </div>
@@ -564,94 +577,150 @@
             <h2 class="slide-title">Today's Journey (Day 1: DISCOVER)</h2>
 
             <div class="content-container">
-                <div class="key-points">
+                <div class="key-points" style="font-size: 1.1rem;">
                     <div class="point">
                         <span class="point-icon">🎬</span>
                         <span class="point-text">
-                            <span class="highlight">5:30-6:00:</span> Setting the Scene - LLMs in Research
+                            <span class="highlight">5:30-5:40:</span> Adam Kicks Off - Workshop Overview
                         </span>
                     </div>
-                    <div class="point">
-                        <span class="point-icon">🔍</span>
+                    <div class="point" style="background: rgba(255, 200, 0, 0.1); border: 2px solid #ffc800; border-radius: 10px; padding: 12px;">
+                        <span class="point-icon">🚀</span>
                         <span class="point-text">
-                            <span class="highlight">6:00-6:25:</span> OpenAlex Deep Dive & Live Demo
-                        </span>
-                    </div>
-                    <div class="point">
-                        <span class="point-icon">☕</span>
-                        <span class="point-text">
-                            <span class="highlight">6:25-6:40:</span> Break <span class="urgent">(ADD DROPBOX NOW!)</span>
+                            <span class="highlight">5:40-6:25:</span> Stephan's RuBase What/Why/How<br>
+                            <strong style="color: #ffc800;">📱 INSTALL WSL & LLM CLI During Intros!</strong>
                         </span>
                     </div>
                     <div class="point">
                         <span class="point-icon">💻</span>
                         <span class="point-text">
-                            <span class="highlight">6:40-7:30:</span> Hands-On Exercise - Build YOUR Corpus
+                            <span class="highlight">6:25-6:40:</span> Technical Setup & Student Introductions
                         </span>
                     </div>
                     <div class="point">
-                        <span class="point-icon">📚</span>
+                        <span class="point-icon">☕</span>
                         <span class="point-text">
-                            <span class="highlight">7:30-8:00:</span> Zotero Integration & Next Steps
+                            <span class="highlight">6:40-6:55:</span> BREAK <span class="urgent">(Finish Dropbox & Installs!)</span>
                         </span>
                     </div>
-                    <div class="point" style="background: rgba(255,255,0,0.05); padding: 15px; border-radius: 10px;">
-                        <span class="point-icon">⏰</span>
+                    <div class="point">
+                        <span class="point-icon">📊</span>
                         <span class="point-text">
-                            <span class="highlight">Note:</span> We might not finish everything - tomorrow we continue!
+                            <span class="highlight">6:55-7:35:</span> Adam's Bibliometrics & The Lens Demo
+                        </span>
+                    </div>
+                    <div class="point">
+                        <span class="point-icon">🔍</span>
+                        <span class="point-text">
+                            <span class="highlight">7:35-8:20:</span> Stephan's OpenAlex Deep Dive & Practice
+                        </span>
+                    </div>
+                    <div class="point">
+                        <span class="point-icon">📝</span>
+                        <span class="point-text">
+                            <span class="highlight">8:20-8:30:</span> Wrap-up & Homework Assignment
                         </span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 7: Technical Requirements -->
+        <!-- Slide 7: URGENT Installation Requirements -->
         <div class="slide">
-            <h2 class="slide-title">Quick Tech Check</h2>
+            <h2 class="slide-title">🚨 INSTALL NOW: During Introductions!</h2>
+            <div class="timer">⏰ Start Installing at 5:40 PM!</div>
+
+            <div class="content-container">
+                <div class="action-box">
+                    <div class="action-title">CLI & LLM Tools Required TODAY!</div>
+                    <div class="action-steps">
+                        <div class="step">
+                            <span class="step-number">Windows Users:</span>
+                            Install WSL (Windows Subsystem for Linux)
+                        </div>
+                        <div class="step">
+                            <span class="step-number">All Users:</span>
+                            Install LLM CLI tools (Claude, etc.)
+                        </div>
+                        <div class="step">
+                            <span class="step-number">Where:</span>
+                            Resources → CLI/LLM Setup Guide has full instructions
+                        </div>
+                        <div class="step">
+                            <span class="step-number">When:</span>
+                            START NOW during student introductions (5:40-6:25 PM)
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(0,255,255,0.1); border: 2px solid var(--bright-cyan); border-radius: 15px;">
+                        <p style="color: var(--bright-cyan); font-size: 1.2rem; font-weight: 700;">
+                            💡 Stephan will help troubleshoot while Adam presents!
+                        </p>
+                    </div>
+                </div>
+                <div class="key-points" style="margin-top: 20px;">
+                    <div class="point">
+                        <span class="point-icon">✅</span>
+                        <span class="point-text">
+                            <span class="highlight">Also Required:</span> Dropbox account (during break)
+                        </span>
+                    </div>
+                    <div class="point">
+                        <span class="point-icon">💻</span>
+                        <span class="point-text">
+                            <span class="highlight">We'll Use These:</span> For hands-on corpus building today!
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Tech Requirements Summary -->
+        <div class="slide">
+            <h2 class="slide-title">Quick Tech Check Summary</h2>
 
             <div class="content-container">
                 <div class="key-points">
                     <div class="point">
                         <span class="point-icon">✅</span>
                         <span class="point-text">
-                            <span class="highlight">Required Now:</span> Web browser (you're using it!)
+                            <span class="highlight">Browser:</span> You're already using it!
                         </span>
                     </div>
                     <div class="point">
                         <span class="point-icon">✅</span>
                         <span class="point-text">
-                            <span class="highlight">Required Today:</span> Dropbox account (free version is fine)
+                            <span class="highlight">Dropbox:</span> Free account - set up during break
                         </span>
                     </div>
                     <div class="point">
-                        <span class="point-icon">📝</span>
+                        <span class="point-icon">⚡</span>
                         <span class="point-text">
-                            <span class="highlight">Optional Today:</span> Python (for hands-on exercise)
+                            <span class="highlight">WSL/CLI:</span> Installing NOW during introductions
                         </span>
                     </div>
                     <div class="point">
-                        <span class="point-icon">📝</span>
+                        <span class="point-icon">📊</span>
                         <span class="point-text">
-                            <span class="highlight">Tomorrow:</span> CLI tools (WSL for Windows users) - we'll help you!
+                            <span class="highlight">OpenAlex:</span> No account needed - we'll use the API
                         </span>
                     </div>
                     <div class="point">
-                        <span class="point-icon">💡</span>
+                        <span class="point-icon">🔮</span>
                         <span class="point-text">
-                            <span class="highlight">Pro Tip:</span> Check Resources → CLI/LLM Setup Guide tonight if you want a head start
+                            <span class="highlight">Claude AI:</span> Account setup instructions in Resources
                         </span>
                     </div>
                     <div class="point" style="background: rgba(0,255,127,0.05); padding: 15px; border-radius: 10px;">
                         <span class="point-icon">🆓</span>
                         <span class="point-text">
-                            <span class="highlight">Good News:</span> Everything we use has a free tier available!
+                            <span class="highlight">Everything:</span> Has a free tier - no paid subscriptions required!
                         </span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 8: Interactive Learning -->
+        <!-- Slide 9: Interactive Learning -->
         <div class="slide">
             <h2 class="slide-title">This is YOUR Workshop</h2>
 
@@ -697,7 +766,7 @@
             </div>
         </div>
 
-        <!-- Slide 9: Let's Begin! -->
+        <!-- Slide 10: Let's Begin! -->
         <div class="slide">
             <h2 class="slide-title">Ready? Let's Transform Your Research!</h2>
 
@@ -806,6 +875,45 @@
 
         // Initialize
         showSlide(0);
+
+        // Generate QR Code for Dropbox link
+        function generateQRCode() {
+            const qrContainer = document.getElementById('qrcode-dropbox');
+            if (qrContainer && typeof QRCode !== 'undefined') {
+                // Clear any existing QR code
+                qrContainer.innerHTML = '';
+
+                // Generate new QR code with the TinyURL
+                new QRCode(qrContainer, {
+                    text: 'https://tinyurl.com/rubase-fletcher',
+                    width: 250,
+                    height: 250,
+                    colorDark: '#0a192f',
+                    colorLight: '#ffffff',
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            }
+        }
+
+        // Generate QR code when slide becomes active
+        const originalShowSlide = showSlide;
+        showSlide = function(n) {
+            originalShowSlide(n);
+            // Generate QR code when we reach slide 3 (index 2)
+            if (currentSlide === 2) {
+                setTimeout(generateQRCode, 100);
+            }
+        };
+
+        // Also generate on initial load if we're on slide 3
+        document.addEventListener('DOMContentLoaded', () => {
+            if (currentSlide === 2) {
+                generateQRCode();
+            }
+        });
     </script>
+
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 </body>
 </html>
