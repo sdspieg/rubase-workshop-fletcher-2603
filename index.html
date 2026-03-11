@@ -744,6 +744,12 @@
                 return;
             }
 
+            // When Day 1 is clicked, go directly to OpenAlex welcome slide
+            if (dayNumber === 1) {
+                window.location.href = 'modules/openalex/index.html';
+                return;
+            }
+
             WORKSHOP.currentDay = dayNumber;
             // Update sidebar with new day's modules
             updateSidebar(dayNumber);
