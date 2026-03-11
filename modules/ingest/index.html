@@ -176,7 +176,7 @@
             gap: 15px;
         }
 
-        .exit-btn, .back-btn {
+        .back-btn {
             height: 60px;
             display: flex;
             align-items: center;
@@ -193,7 +193,7 @@
             box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
         }
 
-        .exit-btn:hover, .back-btn:hover {
+        .back-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 6px 30px rgba(0, 255, 255, 0.5);
         }
@@ -280,13 +280,10 @@
             <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">→</button>
         </div>
 
-        <!-- Top Navigation Buttons -->
+        <!-- Top Navigation Button -->
         <div class="top-buttons">
             <button class="back-btn" onclick="window.location.href='../../index.html'">
                 ← Back to Hub
-            </button>
-            <button class="exit-btn" onclick="window.location.href='../openalex/index.html'">
-                OpenAlex Slides →
             </button>
         </div>
     </div>
