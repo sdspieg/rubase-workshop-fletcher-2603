@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2: FRAME - RuBase Workshop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Titillium Web', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #0a192f;
+            color: #f8fafc;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700;900&display=swap');
+
+        :root {
+            --dark-bg: #0a192f;
+            --bright-cyan: #00ffff;
+            --bright-white: #ffffff;
+            --light-gray: #c8c8c8;
+            --bright-yellow: #ffff00;
+            --bright-green: #00ff7f;
+            --bright-red: #ff6347;
+            --bright-orange: #ffa500;
+            --bright-purple: #9370db;
+            --dark-accent: #142847;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--dark-bg);
+        }
+
+        /* Partner Logos Header */
+        .partner-logos {
+            position: fixed;
+            top: 15px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            z-index: 100;
+        }
+
+        .partner-logos a {
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .partner-logos a:hover {
+            opacity: 1;
+        }
+
+        .partner-logos img {
+            height: 60px;
+        }
+
+        .slide {
+            width: 100%;
+            height: calc(100vh - 120px);
+            max-height: calc(100vh - 120px);
+            padding: 40px 20px 5px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 900;
+            color: var(--bright-purple);
+            margin-bottom: 10px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .visual-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            padding: 20px;
+        }
+
+        .top-buttons {
+            position: fixed;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 101;
+            display: flex;
+            gap: 15px;
+        }
+
+        .back-btn {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--bright-cyan), var(--bright-purple));
+            color: var(--dark-bg);
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 30px rgba(0, 255, 255, 0.5);
+        }
+
+        .coming-soon {
+            background: linear-gradient(135deg, rgba(147,112,219,0.1), rgba(147,112,219,0.05));
+            border: 3px solid var(--bright-purple);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .coming-soon h2 {
+            color: var(--bright-purple);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .coming-soon p {
+            color: var(--light-gray);
+            font-size: 1.3rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Partner Logos Header -->
+    <div class="partner-logos">
+        <a href="https://hcss.nl" target="_blank" title="The Hague Centre for Strategic Studies">
+            <img src="../openalex/hcss_logo.svg" alt="HCSS Logo">
+        </a>
+        <a href="https://hcss.nl/rubase/" target="_blank" title="RuBase">
+            <img src="../openalex/rubase_logo.svg" alt="RuBase Logo">
+        </a>
+    </div>
+
+    <div class="slideshow-container">
+        <div class="slide">
+            <h2 class="slide-title">Day 2: FRAME</h2>
+            <div style="text-align: center; margin-top: -5px; margin-bottom: 15px;">
+                <span style="color: var(--bright-purple); font-size: 1.4rem; font-weight: 700;">Building Rigorous Analytical Pipelines</span>
+            </div>
+
+            <div class="visual-container">
+                <div class="coming-soon">
+                    <h2>🔒 Available Thursday</h2>
+                    <p>This module will be unlocked on Thursday, March 13</p>
+                    <p style="margin-top: 20px; font-size: 1.1rem;">Topics will include:</p>
+                    <ul style="text-align: left; list-style: none; margin-top: 20px;">
+                        <li style="margin-bottom: 10px;">▸ Building effective taxonomies</li>
+                        <li style="margin-bottom: 10px;">▸ Designing classification systems</li>
+                        <li style="margin-bottom: 10px;">▸ Creating coding schemes</li>
+                        <li style="margin-bottom: 10px;">▸ Hands-on workshop exercises</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Navigation Button -->
+        <div class="top-buttons">
+            <button class="back-btn" onclick="window.location.href='../workshop-overview/index.html'">
+                ← Back to Overview
+            </button>
+        </div>
+    </div>
+</body>
+</html>
