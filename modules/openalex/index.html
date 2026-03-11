@@ -539,9 +539,9 @@
             height: 60px;  /* Same height as logo container */
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, var(--bright-cyan), var(--bright-purple));
-            color: var(--dark-bg);
-            border: none;
+            background: rgba(20, 40, 71, 0.9);
+            border: 2px solid var(--bright-cyan);
+            color: var(--bright-cyan);
             padding: 15px 35px;
             font-size: 1.1rem;
             font-weight: 700;
@@ -553,6 +553,7 @@
         }
 
         .exit-btn:hover, .back-btn:hover {
+            background: rgba(0, 255, 255, 0.15);
             transform: scale(1.05);
             box-shadow: 0 6px 30px rgba(0, 255, 255, 0.5);
         }
