@@ -411,8 +411,20 @@
     </style>
 </head>
 <body>
+    <!-- Partner Logos (Fixed Position) -->
+    <div style="position: fixed; top: 15px; left: 20px; z-index: 1001;">
+        <a href="https://hcss.nl" target="_blank">
+            <img src="modules/openalex/hcss_logo.svg" alt="HCSS Logo" style="height: 80px;">
+        </a>
+    </div>
+    <div style="position: fixed; top: 15px; right: 20px; z-index: 1001;">
+        <a href="https://hcss.nl/rubase/" target="_blank">
+            <img src="modules/openalex/rubase_logo.svg" alt="RuBase Logo" style="height: 80px;">
+        </a>
+    </div>
+
     <!-- Header -->
-    <header class="header">
+    <header class="header" style="padding-left: 120px; padding-right: 120px;">
         <div class="header-title">🎓 RuBase Methods Workshop</div>
         <nav class="header-nav">
             <button onclick="showHome()">🏠 Home</button>
@@ -645,6 +657,13 @@
 
             const sectionPath = module.sections[sectionId];
             if (!sectionPath) return;
+
+            // Special handling for OpenAlex - open in new tab/full screen
+            if (moduleId === 'biblio' && sectionId === 'openalex') {
+                // Open OpenAlex in same window (full screen)
+                window.location.href = sectionPath;
+                return;
+            }
 
             // Update current state
             WORKSHOP.currentModule = moduleId;
