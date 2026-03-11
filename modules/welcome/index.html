@@ -455,8 +455,8 @@
                                 <span class="step-number">1.</span>
                                 Scan QR code or go to this link:
                             </div>
-                            <div class="code-box" style="font-size: 1.8rem; text-align: center; padding: 25px;">
-                                tinyurl.com/rubase-fletcher
+                            <div class="code-box" style="font-size: 1rem; text-align: center; padding: 15px; word-break: break-all;">
+                                https://www.dropbox.com/scl/fo/0is0u63ng8vguc5pzkq3w/ANXEY93apqRa0jBjFXW54SM?rlkey=h5ds0oonwhm05ajypcgjf2sy9&dl=0
                             </div>
                             <div class="step">
                                 <span class="step-number">2.</span>
@@ -484,8 +484,8 @@
                         <div style="color: var(--bright-cyan); font-size: 1.4rem; font-weight: 700; text-align: center; margin-bottom: 10px;">
                             📱 Scan with Phone
                         </div>
-                        <div style="font-size: 1.2rem; color: var(--bright-yellow); text-align: center; font-weight: 600;">
-                            tinyurl.com/rubase-fletcher
+                        <div style="font-size: 0.9rem; color: var(--bright-yellow); text-align: center; font-weight: 600;">
+                            Takes you to Dropbox folder
                         </div>
                     </div>
                 </div>
@@ -883,9 +883,9 @@
                 // Clear any existing QR code
                 qrContainer.innerHTML = '';
 
-                // Generate new QR code with the TinyURL
+                // Generate new QR code with the actual Dropbox URL
                 new QRCode(qrContainer, {
-                    text: 'https://tinyurl.com/rubase-fletcher',
+                    text: 'https://www.dropbox.com/scl/fo/0is0u63ng8vguc5pzkq3w/ANXEY93apqRa0jBjFXW54SM?rlkey=h5ds0oonwhm05ajypcgjf2sy9&dl=0',
                     width: 250,
                     height: 250,
                     colorDark: '#0a192f',

@@ -34,7 +34,6 @@ Your strategy is **perfect** and will work exactly as intended:
 1. Have students sign into Dropbox
 2. They click the shared link:
    https://www.dropbox.com/scl/fo/0is0u63ng8vguc5pzkq3w/ANXEY93apqRa0jBjFXW54SM?rlkey=h5ds0oonwhm05ajypcgjf2sy9&dl=0
-   OR use short URL: https://tinyurl.com/rubase-fletcher
 3. Click "Add to Dropbox" button
 4. Folder syncs to their account
 ```
