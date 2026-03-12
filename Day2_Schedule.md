@@ -1,5 +1,5 @@
 # Day 2 Schedule: Building Taxonomies
-## Wednesday, March 12, 2026
+## Thursday, March 12, 2026
 
 ### 5:30 PM - 6:00 PM: Reflections From Yesterday
 - **Lens.org** - Discussion and Q&A
