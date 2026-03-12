@@ -647,7 +647,7 @@
         <!-- Slide 1: Title -->
         <div class="slide active">
             <h1 class="slide-title">Building Taxonomies</h1>
-            <p class="slide-subtitle">From Chaos to Structure: The Art of Multi-Dimensional Analysis</p>
+            <p class="slide-subtitle">From Question Marks to Structure: The Art of Multi-Dimensional Analysis</p>
 
             <div class="metrics-grid" style="margin-top: 60px;">
                 <div class="metric-card">
@@ -762,7 +762,220 @@
             </div>
         </div>
 
-        <!-- Slide 4: What Are Taxonomies -->
+        <!-- Slide 4: What is a Taxonomy -->
+        <div class="slide">
+            <h2 class="slide-title">What is a Taxonomy?</h2>
+            <p class="slide-subtitle">Hierarchical Classification Systems</p>
+
+            <div style="display: flex; align-items: center; justify-content: space-around; margin: 40px auto; max-width: 1400px;">
+                <!-- Biological Taxonomy Example -->
+                <div style="flex: 1; padding: 20px;">
+                    <h3 style="color: var(--bright-cyan); margin-bottom: 20px; text-align: center;">Biological Classification</h3>
+                    <div class="taxonomy-tree" style="margin: 0;">
+                        <div class="tree-level">
+                            <div class="tree-node root" style="background: linear-gradient(135deg, #2a5a4a, #3a6a5a);">
+                                Kingdom: Animalia
+                            </div>
+                        </div>
+                        <div class="tree-connector" style="left: 50%; height: 40px;"></div>
+                        <div class="tree-level">
+                            <div class="tree-node level2" style="background: linear-gradient(135deg, #3a6a5a, #4a7a6a);">
+                                Phylum: Chordata
+                            </div>
+                        </div>
+                        <div class="tree-connector" style="left: 50%; height: 40px;"></div>
+                        <div class="tree-level">
+                            <div class="tree-node level2" style="background: linear-gradient(135deg, #4a7a6a, #5a8a7a);">
+                                Class: Mammalia
+                            </div>
+                        </div>
+                        <div class="tree-connector" style="left: 50%; height: 40px;"></div>
+                        <div class="tree-level">
+                            <div class="tree-node level3" style="background: linear-gradient(135deg, #5a8a7a, #6a9a8a);">
+                                Order: Carnivora
+                            </div>
+                        </div>
+                        <div class="tree-connector" style="left: 50%; height: 40px;"></div>
+                        <div class="tree-level">
+                            <div class="tree-node taxa" style="background: linear-gradient(135deg, #6a9a8a, #7aaa9a);">
+                                Species: Tiger 🐅
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Library Classification Example -->
+                <div style="flex: 1; padding: 20px;">
+                    <h3 style="color: var(--bright-purple); margin-bottom: 20px; text-align: center;">Library Classification</h3>
+                    <div class="taxonomy-tree" style="margin: 0;">
+                        <div class="tree-level">
+                            <div class="tree-node root" style="background: linear-gradient(135deg, #4a3a6a, #5a4a7a);">
+                                000 - Computer Science 💻
+                            </div>
+                        </div>
+                        <div class="tree-connector" style="left: 50%; height: 40px;"></div>
+                        <div class="tree-level">
+                            <div class="tree-node level2" style="background: linear-gradient(135deg, #5a4a7a, #6a5a8a);">
+                                005 - Programming
+                            </div>
+                        </div>
+                        <div class="tree-connector" style="left: 50%; height: 40px;"></div>
+                        <div class="tree-level">
+                            <div class="tree-node level3" style="background: linear-gradient(135deg, #6a5a8a, #7a6a9a);">
+                                005.1 - Software Development
+                            </div>
+                        </div>
+                        <div class="tree-connector" style="left: 50%; height: 40px;"></div>
+                        <div class="tree-level">
+                            <div class="tree-node taxa" style="background: linear-gradient(135deg, #7a6a9a, #8a7aaa);">
+                                005.13 - Python Programming 🐍
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Military Hierarchy Example -->
+                <div style="flex: 1; padding: 20px;">
+                    <h3 style="color: var(--bright-yellow); margin-bottom: 20px; text-align: center;">Military Organization</h3>
+                    <div class="taxonomy-tree" style="margin: 0;">
+                        <div class="tree-level">
+                            <div class="tree-node root" style="background: linear-gradient(135deg, #6a5a3a, #7a6a4a);">
+                                Armed Forces 🎖️
+                            </div>
+                        </div>
+                        <div class="tree-connector" style="left: 50%; height: 40px;"></div>
+                        <div class="tree-level">
+                            <div class="tree-node level2" style="background: linear-gradient(135deg, #7a6a4a, #8a7a5a);">
+                                Army
+                            </div>
+                        </div>
+                        <div class="tree-connector" style="left: 50%; height: 40px;"></div>
+                        <div class="tree-level">
+                            <div class="tree-node level3" style="background: linear-gradient(135deg, #8a7a5a, #9a8a6a);">
+                                Division
+                            </div>
+                        </div>
+                        <div class="tree-connector" style="left: 50%; height: 40px;"></div>
+                        <div class="tree-level">
+                            <div class="tree-node taxa" style="background: linear-gradient(135deg, #9a8a6a, #aa9a7a);">
+                                Battalion
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding: 25px; background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(0, 255, 255, 0.05)); border-radius: 15px; margin-top: 30px;">
+                <p style="font-size: 1.3rem; color: var(--bright-white);">
+                    <strong style="color: var(--bright-cyan);">Key Feature:</strong> Each item belongs to <span style="color: var(--bright-yellow);">exactly one parent</span><br>
+                    <span style="font-size: 1.1rem; color: var(--light-gray);">Strict hierarchical "IS-A" relationships</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 5: What is an Ontology -->
+        <div class="slide">
+            <h2 class="slide-title">What is an Ontology?</h2>
+            <p class="slide-subtitle">Network of Relationships</p>
+
+            <div style="position: relative; width: 100%; max-width: 1200px; height: 500px; margin: 40px auto;">
+                <!-- SVG Network Visualization -->
+                <svg width="100%" height="100%" viewBox="0 0 1200 500">
+                    <!-- Connection lines -->
+                    <line x1="600" y1="250" x2="300" y2="150" stroke="#00ffff" stroke-width="2" opacity="0.5"/>
+                    <line x1="600" y1="250" x2="900" y2="150" stroke="#00ffff" stroke-width="2" opacity="0.5"/>
+                    <line x1="600" y1="250" x2="300" y2="350" stroke="#ff6347" stroke-width="2" opacity="0.5"/>
+                    <line x1="600" y1="250" x2="900" y2="350" stroke="#ff6347" stroke-width="2" opacity="0.5"/>
+                    <line x1="300" y1="150" x2="150" y2="100" stroke="#ffd700" stroke-width="2" opacity="0.5"/>
+                    <line x1="300" y1="150" x2="150" y2="200" stroke="#ffd700" stroke-width="2" opacity="0.5"/>
+                    <line x1="900" y1="150" x2="1050" y2="100" stroke="#00ff7f" stroke-width="2" opacity="0.5"/>
+                    <line x1="900" y1="150" x2="1050" y2="200" stroke="#00ff7f" stroke-width="2" opacity="0.5"/>
+                    <line x1="300" y1="350" x2="150" y2="300" stroke="#9370db" stroke-width="2" opacity="0.5"/>
+                    <line x1="300" y1="350" x2="150" y2="400" stroke="#9370db" stroke-width="2" opacity="0.5"/>
+                    <line x1="900" y1="350" x2="1050" y2="300" stroke="#ffa500" stroke-width="2" opacity="0.5"/>
+                    <line x1="900" y1="350" x2="1050" y2="400" stroke="#ffa500" stroke-width="2" opacity="0.5"/>
+                    <!-- Cross connections -->
+                    <line x1="300" y1="150" x2="900" y2="350" stroke="#00ffff" stroke-width="1" opacity="0.3" stroke-dasharray="5,5"/>
+                    <line x1="900" y1="150" x2="300" y2="350" stroke="#ff6347" stroke-width="1" opacity="0.3" stroke-dasharray="5,5"/>
+
+                    <!-- Central node -->
+                    <circle cx="600" cy="250" r="60" fill="#1a3a5a" stroke="#00ffff" stroke-width="3"/>
+                    <text x="600" y="250" text-anchor="middle" fill="#00ffff" font-size="18" font-weight="bold">Tiger</text>
+
+                    <!-- Related nodes -->
+                    <circle cx="300" cy="150" r="50" fill="#2a4a6a" stroke="#ffd700" stroke-width="2"/>
+                    <text x="300" y="150" text-anchor="middle" fill="#ffd700" font-size="16">Habitat</text>
+
+                    <circle cx="900" cy="150" r="50" fill="#2a4a6a" stroke="#00ff7f" stroke-width="2"/>
+                    <text x="900" y="150" text-anchor="middle" fill="#00ff7f" font-size="16">Prey</text>
+
+                    <circle cx="300" cy="350" r="50" fill="#2a4a6a" stroke="#9370db" stroke-width="2"/>
+                    <text x="300" y="350" text-anchor="middle" fill="#9370db" font-size="16">Behavior</text>
+
+                    <circle cx="900" cy="350" r="50" fill="#2a4a6a" stroke="#ffa500" stroke-width="2"/>
+                    <text x="900" y="350" text-anchor="middle" fill="#ffa500" font-size="16">Conservation</text>
+
+                    <!-- Leaf nodes -->
+                    <circle cx="150" cy="100" r="35" fill="#3a5a7a" stroke="#ffd700" stroke-width="1"/>
+                    <text x="150" y="105" text-anchor="middle" fill="white" font-size="14">Jungle</text>
+
+                    <circle cx="150" cy="200" r="35" fill="#3a5a7a" stroke="#ffd700" stroke-width="1"/>
+                    <text x="150" y="205" text-anchor="middle" fill="white" font-size="14">Grassland</text>
+
+                    <circle cx="1050" cy="100" r="35" fill="#3a5a7a" stroke="#00ff7f" stroke-width="1"/>
+                    <text x="1050" y="105" text-anchor="middle" fill="white" font-size="14">Deer</text>
+
+                    <circle cx="1050" cy="200" r="35" fill="#3a5a7a" stroke="#00ff7f" stroke-width="1"/>
+                    <text x="1050" y="205" text-anchor="middle" fill="white" font-size="14">Boar</text>
+
+                    <circle cx="150" cy="300" r="35" fill="#3a5a7a" stroke="#9370db" stroke-width="1"/>
+                    <text x="150" y="305" text-anchor="middle" fill="white" font-size="14">Solitary</text>
+
+                    <circle cx="150" cy="400" r="35" fill="#3a5a7a" stroke="#9370db" stroke-width="1"/>
+                    <text x="150" y="405" text-anchor="middle" fill="white" font-size="14">Nocturnal</text>
+
+                    <circle cx="1050" cy="300" r="35" fill="#3a5a7a" stroke="#ffa500" stroke-width="1"/>
+                    <text x="1050" y="305" text-anchor="middle" fill="white" font-size="14">Endangered</text>
+
+                    <circle cx="1050" cy="400" r="35" fill="#3a5a7a" stroke="#ffa500" stroke-width="1"/>
+                    <text x="1050" y="405" text-anchor="middle" fill="white" font-size="14">Protected</text>
+
+                    <!-- Relationship labels -->
+                    <text x="450" y="190" fill="#00ffff" font-size="12" font-style="italic">lives in</text>
+                    <text x="750" y="190" fill="#00ff7f" font-size="12" font-style="italic">hunts</text>
+                    <text x="450" y="310" fill="#9370db" font-size="12" font-style="italic">exhibits</text>
+                    <text x="750" y="310" fill="#ffa500" font-size="12" font-style="italic">status</text>
+                </svg>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1200px; margin: 30px auto;">
+                <div style="background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 10px; border-left: 3px solid #ffd700;">
+                    <strong style="color: #ffd700;">LIVES IN →</strong>
+                    <p style="font-size: 0.9rem; color: var(--light-gray); margin-top: 5px;">Spatial relationships</p>
+                </div>
+                <div style="background: rgba(0, 255, 127, 0.1); padding: 15px; border-radius: 10px; border-left: 3px solid #00ff7f;">
+                    <strong style="color: #00ff7f;">PREYS ON →</strong>
+                    <p style="font-size: 0.9rem; color: var(--light-gray); margin-top: 5px;">Feeding relationships</p>
+                </div>
+                <div style="background: rgba(147, 112, 219, 0.1); padding: 15px; border-radius: 10px; border-left: 3px solid #9370db;">
+                    <strong style="color: #9370db;">EXHIBITS →</strong>
+                    <p style="font-size: 0.9rem; color: var(--light-gray); margin-top: 5px;">Behavioral traits</p>
+                </div>
+                <div style="background: rgba(255, 165, 0, 0.1); padding: 15px; border-radius: 10px; border-left: 3px solid #ffa500;">
+                    <strong style="color: #ffa500;">HAS STATUS →</strong>
+                    <p style="font-size: 0.9rem; color: var(--light-gray); margin-top: 5px;">Conservation state</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding: 25px; background: linear-gradient(135deg, rgba(147, 112, 219, 0.1), rgba(147, 112, 219, 0.05)); border-radius: 15px;">
+                <p style="font-size: 1.3rem; color: var(--bright-white);">
+                    <strong style="color: var(--bright-purple);">Key Feature:</strong> Multiple <span style="color: var(--bright-cyan);">relationship types</span> between concepts<br>
+                    <span style="font-size: 1.1rem; color: var(--light-gray);">Rich semantic network with rules and properties</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 6: Taxonomies vs Ontologies (comparison) -->
         <div class="slide">
             <h2 class="slide-title">Taxonomies vs Ontologies</h2>
 
@@ -1143,6 +1356,8 @@ Ensure:
         <div class="progress-dot" onclick="goToSlide(9)"></div>
         <div class="progress-dot" onclick="goToSlide(10)"></div>
         <div class="progress-dot" onclick="goToSlide(11)"></div>
+        <div class="progress-dot" onclick="goToSlide(12)"></div>
+        <div class="progress-dot" onclick="goToSlide(13)"></div>
     </div>
 
     <!-- Navigation Controls -->
