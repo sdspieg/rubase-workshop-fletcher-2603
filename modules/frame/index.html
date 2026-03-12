@@ -1224,31 +1224,62 @@ Ensure:
         <div class="slide">
             <h2 class="slide-title">Your Turn: 15-Minute Sprint</h2>
 
-            <div class="exercise-container">
-                <div class="exercise-timer" id="timer">15:00</div>
-                <h3 class="exercise-title">🛠️ Build a Mini-Taxonomy</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1400px; margin: 0 auto;">
+                <!-- Part 1: Manual Approach -->
+                <div class="exercise-container" style="margin: 0;">
+                    <div class="exercise-timer" id="timer1" style="top: 10px; right: 10px; font-size: 1.5rem;">7:30</div>
+                    <h3 class="exercise-title" style="font-size: 1.5rem;">📝 Part 1: Manual Build</h3>
+                    <p style="color: var(--light-gray); text-align: center; margin-bottom: 20px;">First, try it yourself!</p>
 
-                <ol class="exercise-steps">
-                    <li class="exercise-step">
-                        Pick a domain you know well (sports, cooking, research methods...)
-                    </li>
-                    <li class="exercise-step">
-                        Identify 3 orthogonal dimensions
-                    </li>
-                    <li class="exercise-step">
-                        Create 2 L2 elements for each dimension
-                    </li>
-                    <li class="exercise-step">
-                        Add 2 taxa for each L2
-                    </li>
-                    <li class="exercise-step">
-                        Test: Can something be classified on all dimensions?
-                    </li>
-                </ol>
-
-                <div style="text-align: center; margin-top: 30px;">
-                    <button class="nav-btn" onclick="startTimer()">⏱️ Start Timer</button>
+                    <ol class="exercise-steps" style="font-size: 0.95rem;">
+                        <li class="exercise-step" style="padding: 15px;">
+                            Pick a domain you know well
+                        </li>
+                        <li class="exercise-step" style="padding: 15px;">
+                            Identify 3 orthogonal dimensions
+                        </li>
+                        <li class="exercise-step" style="padding: 15px;">
+                            Create 2 L2s per dimension
+                        </li>
+                        <li class="exercise-step" style="padding: 15px;">
+                            Add 2 taxa per L2
+                        </li>
+                    </ol>
                 </div>
+
+                <!-- Part 2: AI-Assisted -->
+                <div class="exercise-container" style="margin: 0; border-color: var(--bright-cyan);">
+                    <div class="exercise-timer" id="timer2" style="top: 10px; right: 10px; font-size: 1.5rem; color: var(--bright-cyan);">7:30</div>
+                    <h3 class="exercise-title" style="color: var(--bright-cyan); font-size: 1.5rem;">🤖 Part 2: AI-Powered</h3>
+                    <p style="color: var(--light-gray); text-align: center; margin-bottom: 20px;">Then, let AI expand it!</p>
+
+                    <ol class="exercise-steps" style="font-size: 0.95rem;">
+                        <li class="exercise-step" style="padding: 15px; border-left-color: var(--bright-cyan);">
+                            Open Claude or GPT-4
+                        </li>
+                        <li class="exercise-step" style="padding: 15px; border-left-color: var(--bright-cyan);">
+                            Use our taxonomy prompt
+                        </li>
+                        <li class="exercise-step" style="padding: 15px; border-left-color: var(--bright-cyan);">
+                            Generate full 864-point taxonomy
+                        </li>
+                        <li class="exercise-step" style="padding: 15px; border-left-color: var(--bright-cyan);">
+                            Compare with your manual version
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="nav-btn" onclick="startDualTimer()" style="background: linear-gradient(135deg, var(--bright-yellow), var(--bright-orange));">
+                    ⏱️ Start Both Timers
+                </button>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px; padding: 20px; background: rgba(0,255,255,0.1); border-radius: 10px;">
+                <p style="color: var(--bright-white); font-size: 1.1rem;">
+                    💡 <strong>Pro Tip:</strong> The manual attempt helps you understand what the AI is doing!
+                </p>
             </div>
         </div>
 
@@ -1406,33 +1437,76 @@ Ensure:
         });
 
         // Timer functionality
-        let timerInterval;
-        let timeRemaining = 900; // 15 minutes in seconds
+        let timerInterval1, timerInterval2;
+        let timeRemaining1 = 450; // 7.5 minutes in seconds
+        let timeRemaining2 = 450; // 7.5 minutes in seconds
 
         function startTimer() {
-            if (timerInterval) clearInterval(timerInterval);
+            // Legacy function for backward compatibility
+            startDualTimer();
+        }
 
-            timerInterval = setInterval(() => {
-                timeRemaining--;
-                const minutes = Math.floor(timeRemaining / 60);
-                const seconds = timeRemaining % 60;
+        function startDualTimer() {
+            // Clear any existing timers
+            if (timerInterval1) clearInterval(timerInterval1);
+            if (timerInterval2) clearInterval(timerInterval2);
+
+            // Reset times
+            timeRemaining1 = 450;
+            timeRemaining2 = 450;
+
+            // Timer 1 - Manual approach
+            timerInterval1 = setInterval(() => {
+                timeRemaining1--;
+                const minutes = Math.floor(timeRemaining1 / 60);
+                const seconds = timeRemaining1 % 60;
                 const display = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
-                const timerElement = document.getElementById('timer');
+                const timerElement = document.getElementById('timer1');
                 if (timerElement) {
                     timerElement.textContent = display;
 
-                    if (timeRemaining <= 60) {
+                    if (timeRemaining1 <= 60) {
                         timerElement.style.color = 'var(--bright-red)';
                         timerElement.style.animation = 'pulse 1s infinite';
                     }
 
-                    if (timeRemaining <= 0) {
-                        clearInterval(timerInterval);
+                    if (timeRemaining1 <= 0) {
+                        clearInterval(timerInterval1);
                         timerElement.textContent = "Time's Up!";
+                        // Alert transition to Part 2
+                        if (timeRemaining2 > 0) {
+                            alert('⏰ Part 1 Complete! Now move to Part 2: AI-Powered Taxonomy Generation');
+                        }
                     }
                 }
             }, 1000);
+
+            // Timer 2 - AI approach (starts after delay)
+            setTimeout(() => {
+                timerInterval2 = setInterval(() => {
+                    timeRemaining2--;
+                    const minutes = Math.floor(timeRemaining2 / 60);
+                    const seconds = timeRemaining2 % 60;
+                    const display = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+                    const timerElement = document.getElementById('timer2');
+                    if (timerElement) {
+                        timerElement.textContent = display;
+
+                        if (timeRemaining2 <= 60) {
+                            timerElement.style.color = 'var(--bright-red)';
+                            timerElement.style.animation = 'pulse 1s infinite';
+                        }
+
+                        if (timeRemaining2 <= 0) {
+                            clearInterval(timerInterval2);
+                            timerElement.textContent = "Time's Up!";
+                            alert('🎉 Exercise Complete! Compare your manual and AI-generated taxonomies.');
+                        }
+                    }
+                }, 1000);
+            }, 450000); // Start second timer after 7.5 minutes
         }
 
         // Copy prompt function
