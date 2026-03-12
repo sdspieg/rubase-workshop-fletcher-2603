@@ -104,6 +104,12 @@
             cursor: not-allowed;
         }
 
+        .day-item.current {
+            border-color: var(--bright-cyan);
+            box-shadow: 0 10px 40px rgba(0, 255, 255, 0.4);
+            transform: translateY(-5px);
+        }
+
         .day-number {
             font-size: 2rem;
             font-weight: bold;
@@ -558,7 +564,7 @@
                 },
                 2: {
                     title: 'FRAME',
-                    modules: ['taxonomy-theory', 'taxonomy-workshop', 'advanced']
+                    modules: ['reflections', 'deep-research', 'taxonomies', 'exercise']
                 },
                 3: {
                     title: 'ANALYZE',
@@ -567,6 +573,7 @@
             },
 
             modules: {
+                // Day 1 Modules
                 'welcome': {
                     title: 'Welcome & Setup',
                     presenter: 'Adam',
@@ -602,6 +609,39 @@
                         'api': 'slides/corpus-api.html',
                         'data': 'slides/corpus-data.html'
                     }
+                },
+                // Day 2 Modules
+                'reflections': {
+                    title: 'Reflections From Yesterday',
+                    time: '5:30 PM - 6:00 PM',
+                    url: './modules/mdviewer/index.html?file=Day2_Schedule.md'
+                },
+                'deep-research': {
+                    title: 'Deep Research Methodologies',
+                    time: '6:00 PM - 6:45 PM',
+                    url: './modules/mdviewer/index.html?file=Day2_Schedule.md'
+                },
+                'taxonomies': {
+                    title: 'Multi-Dimensional Taxonomies',
+                    time: '7:15 PM - 8:30 PM',
+                    url: './modules/frame/index.html'
+                },
+                'exercise': {
+                    title: 'Hands-On Exercise',
+                    url: './modules/mdviewer/index.html?file=Taxonomy_Exercise_Instructions.md'
+                },
+                // Day 3 Modules
+                'classification': {
+                    title: 'AI Classification',
+                    locked: true
+                },
+                'visualization': {
+                    title: 'Interactive Visualizations',
+                    locked: true
+                },
+                'outputs': {
+                    title: 'Export & Integration',
+                    locked: true
                 }
             }
         };
@@ -712,32 +752,100 @@
         }
 
         function loadDay(dayNumber) {
-            // Day 2 is now unlocked!
-            if (dayNumber === 2) {
-                // Go to Day 2 landing page
-                window.location.href = 'modules/day2/index.html';
-                return;
-            }
-
             if (dayNumber === 3) {
                 alert(`Day 3 will be unlocked on Friday!`);
                 return;
             }
 
-            // When Day 1 is clicked, go to the ingest page
-            if (dayNumber === 1) {
-                window.location.href = 'modules/discover/index.html';
-                return;
-            }
-
+            // Update current day
             WORKSHOP.currentDay = dayNumber;
+
+            // Update day cards to show active
+            document.querySelectorAll('.day-item').forEach(item => {
+                item.classList.remove('current');
+            });
+            document.querySelector(`.day${dayNumber}`).classList.add('current');
+
             // Update sidebar with new day's modules
             updateSidebar(dayNumber);
+
+            // Hide welcome screen if visible
+            document.getElementById('welcomeScreen').style.display = 'none';
         }
 
         function updateSidebar(dayNumber) {
-            // This would dynamically update the sidebar with the selected day's modules
-            console.log(`Loading Day ${dayNumber} modules...`);
+            const sidebar = document.getElementById('sidebar');
+            const dayData = WORKSHOP.days[dayNumber];
+
+            // Build new sidebar content
+            let sidebarHTML = `<h3 style="color: var(--accent-cyan); margin-bottom: 20px;">DAY ${dayNumber}: ${dayData.title}</h3>`;
+            sidebarHTML += '<ul class="module-list">';
+
+            if (dayNumber === 1) {
+                // Day 1 has the original structure
+                sidebarHTML += `
+                    <li class="module-item">
+                        <div class="module-header" onclick="window.location.href='modules/welcome/index.html'" style="cursor: pointer;">
+                            <span class="module-title">Welcome & Setup</span>
+                        </div>
+                    </li>
+                    <li class="module-item">
+                        <div class="module-header" onclick="window.location.href='modules/mdviewer/index.html?file=RuBase_Workshop_Fletcher_Program.md'" style="cursor: pointer;">
+                            <span class="module-title">📅 Workshop Overview</span>
+                        </div>
+                    </li>
+                    <li class="module-item">
+                        <div class="module-header" onclick="window.location.href='modules/openalex/index.html'" style="cursor: pointer;">
+                            <span class="module-title">🔍 OpenAlex Discovery</span>
+                            <span style="background: linear-gradient(135deg, var(--bright-yellow), var(--bright-orange)); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; color: var(--dark-bg);">Interactive</span>
+                        </div>
+                    </li>
+                    <li class="module-item">
+                        <div class="module-header" onclick="window.location.href='modules/resources/index.html'" style="cursor: pointer;">
+                            <span class="module-title">📚 Resources & Guides</span>
+                        </div>
+                    </li>
+                `;
+            } else if (dayNumber === 2) {
+                // Day 2 modules
+                dayData.modules.forEach(moduleId => {
+                    const module = WORKSHOP.modules[moduleId];
+                    if (module) {
+                        const icon = moduleId === 'taxonomies' ? '🎯 ' :
+                                    moduleId === 'exercise' ? '📝 ' :
+                                    moduleId === 'reflections' ? '💭 ' :
+                                    moduleId === 'deep-research' ? '🔬 ' : '';
+                        const timeStr = module.time ? `<div style="font-size: 0.85rem; color: var(--light-gray); margin-top: 5px;">${module.time}</div>` : '';
+                        const badge = moduleId === 'taxonomies' ? ' <span style="background: linear-gradient(135deg, var(--bright-cyan), var(--bright-purple)); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; color: var(--dark-bg);">Main Workshop</span>' : '';
+
+                        sidebarHTML += `
+                            <li class="module-item">
+                                <div class="module-header" onclick="window.location.href='${module.url || '#'}'" style="cursor: pointer;">
+                                    <span class="module-title">${icon}${module.title}${badge}</span>
+                                    ${timeStr}
+                                </div>
+                            </li>
+                        `;
+                    }
+                });
+                // Add quick links
+                sidebarHTML += `
+                    <li class="module-item" style="margin-top: 20px; border-top: 1px solid rgba(0,255,255,0.2); padding-top: 20px;">
+                        <div class="module-header" onclick="window.location.href='modules/resources/index.html'" style="cursor: pointer;">
+                            <span class="module-title">📚 Resources</span>
+                        </div>
+                    </li>
+                    <li class="module-item">
+                        <div class="module-header" onclick="window.open('https://rumilspace.app', '_blank')" style="cursor: pointer;">
+                            <span class="module-title">🌐 RuBase Dashboard</span>
+                            <span style="font-size: 0.8rem;">↗</span>
+                        </div>
+                    </li>
+                `;
+            }
+
+            sidebarHTML += '</ul>';
+            sidebar.innerHTML = sidebarHTML;
         }
 
         function toggleSidebar() {
