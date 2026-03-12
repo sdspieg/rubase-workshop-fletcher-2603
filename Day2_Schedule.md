@@ -1,45 +1,61 @@
 # Day 2 Schedule: Building Taxonomies
 ## Thursday, March 12, 2026
 
-### 5:30 PM - 6:00 PM: Reflections From Yesterday
-- **Lens.org** - Discussion and Q&A
-- **WSL Setup** - Troubleshooting downloads and installations
-- **Open Q&A** - Address any questions from Day 1
-- Review OpenAlex discoveries and share interesting findings
+### 5:30 PM - 6:00 PM: Reflections From Yesterday (30 min)
+- **What surprised you in your literature discovery?**
+  - Unexpected patterns in OpenAlex
+  - Hidden citation networks
+  - Gaps you identified
+- **Lens.org Deep Dive**
+  - Advanced features discussion
+  - Patent-paper connections
+- **WSL Setup & Technical Q&A**
+  - Troubleshooting any remaining issues
+  - Python environment setup for tomorrow
 
 ---
 
-### 6:00 PM - 6:45 PM: Deep Research Methodologies
-#### What is Deep Research?
-- Moving beyond surface-level literature reviews
-- Systematic exploration of knowledge domains
-- Identifying gaps and opportunities in existing research
-
-#### How to Conduct Deep Research
-- Structured search strategies
+### 6:00 PM - 6:15 PM: Deep Research Methods (15 min)
+#### Beyond Surface-Level Searching
+- Full-text mining strategies
 - Citation network analysis
-- Cross-database validation techniques
-- Building comprehensive research maps
+- Finding literature in references
+- Cross-database validation
 
-#### Common Pitfalls to Avoid
-- Confirmation bias in search terms
-- Over-reliance on single databases
-- Missing grey literature and non-traditional sources
-
-#### Pro Tips & Tricks
-- Advanced search operators
-- Citation chaining techniques
-- Automated alert systems
-- Research workflow optimization
+#### The Hidden 90%
+- Grey literature sources
+- Conference proceedings
+- Working papers and preprints
+- Non-English sources
 
 ---
 
-### 6:45 PM - 7:15 PM: DINNER BREAK
-*Grab food, network, and prepare for the taxonomy workshop*
+### 6:15 PM - 6:45 PM: Demo - Russian-Ukrainian War Analysis (30 min)
+#### Real-World Application of RuBase Methods
+- **Live Dashboard Exploration**
+  - 2,619 documents analyzed
+  - 9 orthogonal dimensions
+  - 864 classification points
+
+#### What Multi-Dimensional Analysis Reveals
+- Patterns invisible to binary classification
+- Temporal evolution of narratives
+- Actor-network relationships
+- Methodological distribution
+
+#### Lessons Learned
+- Scale challenges and solutions
+- Quality control at volume
+- Iteration and refinement process
 
 ---
 
-### 7:15 PM - 8:30 PM: Multi-Dimensional Taxonomies Workshop
+### 6:45 PM - 7:00 PM: DINNER BREAK
+*Quick dinner and informal discussion*
+
+---
+
+### 7:00 PM - 8:30 PM: Multi-Dimensional Taxonomies Workshop
 
 **[🎯 Launch Interactive Presentation](../modules/frame/index.html)** | **[📝 Exercise Instructions](../modules/mdviewer/index.html?file=Taxonomy_Exercise_Instructions.md&return=../mdviewer/index.html?file=Day2_Schedule.md)**
 

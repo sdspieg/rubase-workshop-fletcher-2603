@@ -808,27 +808,47 @@
                     </li>
                 `;
             } else if (dayNumber === 2) {
-                // Day 2 modules
-                dayData.modules.forEach(moduleId => {
-                    const module = WORKSHOP.modules[moduleId];
-                    if (module) {
-                        const icon = moduleId === 'taxonomies' ? '🎯 ' :
-                                    moduleId === 'exercise' ? '📝 ' :
-                                    moduleId === 'reflections' ? '💭 ' :
-                                    moduleId === 'deep-research' ? '🔬 ' : '';
-                        const timeStr = module.time ? `<div style="font-size: 0.85rem; color: var(--light-gray); margin-top: 5px;">${module.time}</div>` : '';
-                        const badge = moduleId === 'taxonomies' ? ' <span style="background: linear-gradient(135deg, var(--bright-cyan), var(--bright-purple)); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; color: var(--dark-bg);">Main Workshop</span>' : '';
-
-                        sidebarHTML += `
-                            <li class="module-item">
-                                <div class="module-header" onclick="window.location.href='${module.url || '#'}'" style="cursor: pointer;">
-                                    <span class="module-title">${icon}${module.title}${badge}</span>
-                                    ${timeStr}
-                                </div>
-                            </li>
-                        `;
-                    }
-                });
+                // Day 2 schedule items (without times)
+                sidebarHTML += `
+                    <li class="module-item">
+                        <div class="module-header" onclick="window.location.href='modules/mdviewer/index.html?file=Day2_Schedule.md'" style="cursor: pointer;">
+                            <span class="module-title">💭 Reflections From Yesterday</span>
+                        </div>
+                    </li>
+                    <li class="module-item">
+                        <div class="module-header" onclick="window.location.href='modules/mdviewer/index.html?file=Day2_Schedule.md'" style="cursor: pointer;">
+                            <span class="module-title">🔬 Deep Research Methods</span>
+                        </div>
+                    </li>
+                    <li class="module-item">
+                        <div class="module-header" onclick="window.open('https://rumilspace.app', '_blank')" style="cursor: pointer;">
+                            <span class="module-title">🎖️ Demo: Russia-Ukraine Analysis</span>
+                            <span style="font-size: 0.8rem;">↗</span>
+                        </div>
+                    </li>
+                    <li class="module-item">
+                        <div class="module-header">
+                            <span class="module-title" style="color: var(--bright-yellow);">🍽️ Dinner Break</span>
+                        </div>
+                    </li>
+                    <li class="module-item">
+                        <div class="module-header" onclick="window.location.href='modules/frame/index.html'" style="cursor: pointer;">
+                            <span class="module-title">🎯 Building Taxonomies</span>
+                            <span style="background: linear-gradient(135deg, var(--bright-cyan), var(--bright-purple)); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; color: var(--dark-bg);">Interactive</span>
+                        </div>
+                    </li>
+                    <li class="module-item">
+                        <div class="module-header" onclick="window.location.href='modules/exercise/index.html'" style="cursor: pointer;">
+                            <span class="module-title">📝 Hands-On Exercise</span>
+                            <span style="background: linear-gradient(135deg, var(--bright-yellow), var(--bright-orange)); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; color: var(--dark-bg);">Workshop</span>
+                        </div>
+                    </li>
+                    <li class="module-item">
+                        <div class="module-header" onclick="window.location.href='modules/mdviewer/index.html?file=Day2_Schedule.md'" style="cursor: pointer;">
+                            <span class="module-title">✅ Quality Control & Validation</span>
+                        </div>
+                    </li>
+                `;
                 // Add quick links
                 sidebarHTML += `
                     <li class="module-item" style="margin-top: 20px; border-top: 1px solid rgba(0,255,255,0.2); padding-top: 20px;">
