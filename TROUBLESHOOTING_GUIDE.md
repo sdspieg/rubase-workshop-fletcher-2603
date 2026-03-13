@@ -301,6 +301,33 @@ print(f"Status: {response.status_code}")
 - Not the specific data, but knowing how to get your own
 - Not following instructions, but learning to give instructions to CLI tools
 
+## LLM Interaction Methods
+
+### Two Ways to Interact with LLMs
+1. **Programmatically**: API calls, structured data processing, automated workflows
+   - Use for: Bulk analysis, data pipeline integration, systematic processing
+   - Example: OpenAlex API → JSON processing → LLM analysis via API
+
+2. **As an LLM**: Direct text/image interaction, conversational analysis
+   - Use for: Exploratory research, nuanced interpretation, visual analysis
+   - Example: Upload screenshots, paste text excerpts, ask interpretive questions
+
+### Verification Strategies
+1. **Citation Verification**:
+   - Cross-reference DOIs against original sources
+   - Check author names and publication years
+   - Verify abstracts match claimed content
+
+2. **Webpage Verification (Playwright)**:
+   ```python
+   from playwright.sync_api import sync_playwright
+   with sync_playwright() as p:
+       browser = p.chromium.launch(headless=True)
+       page = browser.new_page()
+       page.goto('https://example.com')
+       # Verify content, capture screenshots, test functionality
+   ```
+
 ## Remember: The Three Golden Rules
 
 1. **ALWAYS VERIFY** - Test on live site, not just local files
