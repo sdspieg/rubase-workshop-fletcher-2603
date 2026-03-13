@@ -12,8 +12,8 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e8ba3 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0a192f 0%, #1e3c72 50%, #2a5298 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -27,7 +27,7 @@
             width: 92%;
             max-width: 1400px;
             height: 88vh;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            background: linear-gradient(135deg, #0f1f3a 0%, #162447 100%);
             border-radius: 20px;
             padding: 50px 60px;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
@@ -59,33 +59,33 @@
         }
 
         h1 {
-            color: #333;
+            color: #00ffff;
             font-size: 3em;
             margin-bottom: 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
             text-align: center;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            letter-spacing: 2px;
         }
 
         h2 {
-            color: #444;
+            color: #00ff7f;
             font-size: 2.2em;
             margin-bottom: 25px;
             padding-bottom: 15px;
-            border-bottom: 3px solid #667eea;
+            border-bottom: 3px solid #00ff7f;
+            text-shadow: 0 0 10px rgba(0, 255, 127, 0.3);
         }
 
         h3 {
-            color: #555;
+            color: #ffff00;
             font-size: 1.6em;
             margin: 25px 0 15px 0;
             font-weight: 600;
+            text-shadow: 0 0 8px rgba(255, 255, 0, 0.3);
         }
 
         h4 {
-            color: #666;
+            color: #ff9800;
             font-size: 1.3em;
             margin: 20px 0 10px 0;
             font-weight: 600;
@@ -93,14 +93,15 @@
 
         .subtitle {
             font-size: 1.5em;
-            color: #666;
+            color: #ffa500;
             margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 165, 0, 0.4);
         }
 
         p {
             font-size: 1.1em;
             line-height: 1.8;
-            color: #555;
+            color: #e0e0e0;
             margin-bottom: 15px;
         }
 
@@ -112,7 +113,7 @@
         li {
             font-size: 1.1em;
             line-height: 1.8;
-            color: #555;
+            color: #e0e0e0;
             margin-bottom: 12px;
         }
 
@@ -125,8 +126,8 @@
         }
 
         .comparison-table th {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #00ff7f 0%, #00ffff 100%);
+            color: #0a192f;
             padding: 12px;
             text-align: left;
             font-weight: 600;
@@ -134,12 +135,13 @@
 
         .comparison-table td {
             padding: 12px;
-            border-bottom: 1px solid #e0e0e0;
-            background: white;
+            border-bottom: 1px solid #2a5298;
+            background: rgba(20, 40, 71, 0.6);
+            color: #e0e0e0;
         }
 
         .comparison-table tr:hover td {
-            background: #f5f5f5;
+            background: rgba(0, 255, 255, 0.1);
         }
 
         .feature-grid {
@@ -150,10 +152,11 @@
         }
 
         .feature-card {
-            background: white;
+            background: linear-gradient(135deg, rgba(0, 255, 127, 0.1) 0%, rgba(0, 255, 255, 0.1) 100%);
+            border: 2px solid #00ff7f;
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 5px 15px rgba(0, 255, 127, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -163,43 +166,56 @@
         }
 
         .feature-card h4 {
-            color: #667eea;
+            color: #00ffff;
             margin-bottom: 10px;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
         }
 
         .tool-section {
-            background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
+            background: linear-gradient(135deg, rgba(20, 40, 71, 0.8) 0%, rgba(42, 82, 152, 0.6) 100%);
+            border: 2px solid #2a5298;
             border-radius: 15px;
             padding: 25px;
             margin: 25px 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.1);
         }
 
         .tool-badge {
             display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #00ff7f 0%, #00ffff 100%);
+            color: #0a192f;
             padding: 5px 12px;
             border-radius: 15px;
             font-weight: bold;
             font-size: 0.9em;
             margin-right: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
 
         .highlight-box {
-            background: linear-gradient(135deg, #e3f2fd 0%, #e8eaf6 100%);
-            border-left: 5px solid #667eea;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(0, 255, 127, 0.1) 100%);
+            border-left: 5px solid #00ffff;
+            border-right: 2px solid #00ffff;
             padding: 20px;
             margin: 20px 0;
             border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
         }
 
         .warning-box {
-            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            background: linear-gradient(135deg, rgba(255, 152, 0, 0.1) 0%, rgba(255, 107, 0, 0.1) 100%);
             border-left: 5px solid #ff9800;
+            border-right: 2px solid #ff9800;
             padding: 20px;
             margin: 20px 0;
             border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 152, 0, 0.2);
+        }
+
+        .warning-box h4 {
+            color: #ffa500;
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
         }
 
         .emphasis {
@@ -221,20 +237,21 @@
 
         .nav-btn {
             padding: 12px 24px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #00ff7f 0%, #00ffff 100%);
+            color: #0a192f;
             border: none;
             border-radius: 25px;
             cursor: pointer;
             font-size: 1em;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
         }
 
         .nav-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 255, 255, 0.6);
+            background: linear-gradient(135deg, #00ffff 0%, #00ff7f 100%);
         }
 
         .nav-btn:disabled {
@@ -246,11 +263,12 @@
             position: absolute;
             top: 20px;
             right: 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #00ff7f 0%, #00ffff 100%);
+            color: #0a192f;
             padding: 8px 16px;
             border-radius: 20px;
             font-weight: bold;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
         }
 
         .timeline {
@@ -306,11 +324,11 @@
 <body>
     <!-- Slide 1: Title -->
     <div class="slide title-slide active">
-        <h1>Deep Research Across Major LLMs</h1>
-        <p class="subtitle">The State of Play (March 2026)</p>
+        <h1>🔬 Deep Research Across Major LLMs</h1>
+        <p class="subtitle">📅 The State of Play (March 2026)</p>
         <div style="margin-top: 40px; color: #888;">
             <p style="font-size: 1.2em;">A Comprehensive Guide to AI-Powered Research Tools</p>
-            <p style="margin-top: 20px;">American & Non-American Capabilities</p>
+            <p style="margin-top: 20px; color: #ffa500;">🌍 American & Non-American Capabilities</p>
         </div>
     </div>
 
@@ -324,7 +342,7 @@
 
             <div class="feature-grid">
                 <div class="feature-card">
-                    <h4>1. Agentic Web Research</h4>
+                    <h4>🕸️ 1. Agentic Web Research</h4>
                     <ul>
                         <li>Autonomously browses dozens/hundreds of sources</li>
                         <li>Reasons about information gaps</li>
@@ -334,7 +352,7 @@
                 </div>
 
                 <div class="feature-card">
-                    <h4>2. Deep Reasoning/Thinking</h4>
+                    <h4>🧠 2. Deep Reasoning/Thinking</h4>
                     <ul>
                         <li>Extended chain-of-thought modes</li>
                         <li>Hard analytical/scientific problems</li>
@@ -354,7 +372,7 @@
     <!-- Slide 3: ChatGPT Deep Research Overview -->
     <div class="slide">
         <span class="slide-number">3 / 24</span>
-        <h2>ChatGPT Deep Research</h2>
+        <h2>🤖 ChatGPT Deep Research</h2>
         <p style="color: #666; font-style: italic;">The pioneer and still the most feature-rich</p>
 
         <div class="timeline">
@@ -374,7 +392,7 @@
 
         <div class="feature-grid">
             <div class="feature-card">
-                <h4>Key Features</h4>
+                <h4>⚙️ Key Features</h4>
                 <ul>
                     <li>Real-time progress tracking</li>
                     <li>Mid-run scope adjustment</li>
@@ -385,7 +403,7 @@
             </div>
 
             <div class="feature-card">
-                <h4>Quotas & Pricing</h4>
+                <h4>💰 Quotas & Pricing</h4>
                 <ul>
                     <li><strong>Pro ($200/mo):</strong> 250 queries/month</li>
                     <li><strong>Plus/Team:</strong> 25 queries</li>
@@ -401,7 +419,7 @@
         <h2>ChatGPT Deep Research - Analysis</h2>
 
         <div class="tool-section">
-            <h3>✓ Strengths</h3>
+            <h3>✅ Strengths</h3>
             <ul>
                 <li>Most mature connector ecosystem</li>
                 <li>Fullscreen report editor with multiple export formats</li>
@@ -412,7 +430,7 @@
         </div>
 
         <div class="warning-box">
-            <h4>⚠ Weaknesses</h4>
+            <h4>⚠️ Weaknesses</h4>
             <ul>
                 <li>Slow <span class="cost-indicator">5-30 minutes per report</span></li>
                 <li>Tight quotas on lower tiers</li>
@@ -422,7 +440,7 @@
         </div>
 
         <div class="highlight-box">
-            <h4>Best For</h4>
+            <h4>🎯 Best For</h4>
             <p>Comprehensive, enterprise-grade research reports where depth matters more than speed, especially when internal data sources need to be integrated.</p>
         </div>
     </div>
@@ -430,7 +448,7 @@
     <!-- Slide 5: Claude Research Overview -->
     <div class="slide">
         <span class="slide-number">5 / 24</span>
-        <h2>Claude Research</h2>
+        <h2>✨ Claude Research</h2>
         <p style="color: #666; font-style: italic;">The fastest option, with a different philosophy</p>
 
         <div class="tool-section">
@@ -467,7 +485,7 @@
         <h2>Claude Research - Analysis</h2>
 
         <div class="tool-section">
-            <h3>✓ Strengths</h3>
+            <h3>✅ Strengths</h3>
             <ul>
                 <li><span class="speed-indicator">Fastest completion times</span> (typically under 5 minutes)</li>
                 <li>Google Workspace bridge for Gmail, Docs, Calendar</li>
@@ -478,7 +496,7 @@
         </div>
 
         <div class="warning-box">
-            <h4>⚠ Weaknesses</h4>
+            <h4>⚠️ Weaknesses</h4>
             <ul>
                 <li>Not as deep-diving as ChatGPT's 30-minute crawls</li>
                 <li>Multiple queries rather than exhaustive single search</li>
@@ -487,7 +505,7 @@
         </div>
 
         <div class="highlight-box">
-            <h4>Best For</h4>
+            <h4>🎯 Best For</h4>
             <p>Speed-critical research queries, Google Workspace-heavy environments, and users who want to build custom research pipelines.</p>
         </div>
     </div>
@@ -495,7 +513,7 @@
     <!-- Slide 7: Gemini Deep Research + Deep Think -->
     <div class="slide">
         <span class="slide-number">7 / 24</span>
-        <h2>Gemini: Deep Research + Deep Think</h2>
+        <h2>🌟 Gemini: Deep Research + Deep Think</h2>
         <p style="color: #666; font-style: italic;">Two distinct capabilities, now converging</p>
 
         <div class="feature-grid">
@@ -536,7 +554,7 @@
         <h2>Gemini - Analysis</h2>
 
         <div class="tool-section">
-            <h3>✓ Strengths</h3>
+            <h3>✅ Strengths</h3>
             <ul>
                 <li>Deepest reasoning capability available (Deep Think)</li>
                 <li>Free tier for web-based Deep Research</li>
@@ -547,7 +565,7 @@
         </div>
 
         <div class="warning-box">
-            <h4>⚠ Weaknesses</h4>
+            <h4>⚠️ Weaknesses</h4>
             <ul>
                 <li>Not ideal for fast solutions (62 sources in 15+ minutes)</li>
                 <li>Deep Think limited to Ultra subscribers ($250/month)</li>
@@ -556,7 +574,7 @@
         </div>
 
         <div class="highlight-box">
-            <h4>Best For</h4>
+            <h4>🎯 Best For</h4>
             <p>Scientific/mathematical research requiring deep reasoning, developers needing API access, or when free tier is sufficient.</p>
         </div>
     </div>
@@ -564,7 +582,7 @@
     <!-- Slide 9: Perplexity Deep Research -->
     <div class="slide">
         <span class="slide-number">9 / 24</span>
-        <h2>Perplexity Deep Research</h2>
+        <h2>🔍 Perplexity Deep Research</h2>
         <p style="color: #666; font-style: italic;">The source-citation specialist, now benchmark-topping</p>
 
         <div class="timeline">
@@ -609,7 +627,7 @@
         <h2>Perplexity - Analysis</h2>
 
         <div class="tool-section">
-            <h3>✓ Strengths</h3>
+            <h3>✅ Strengths</h3>
             <ul>
                 <li>Best citation infrastructure (built from ground up)</li>
                 <li>Model-agnostic (routes to best available)</li>
@@ -621,7 +639,7 @@
         </div>
 
         <div class="warning-box">
-            <h4>⚠ Weaknesses</h4>
+            <h4>⚠️ Weaknesses</h4>
             <ul>
                 <li>Fewer enterprise integrations than ChatGPT or Claude</li>
                 <li>No Google Workspace bridge of its own</li>
@@ -630,7 +648,7 @@
         </div>
 
         <div class="highlight-box">
-            <h4>Best For</h4>
+            <h4>🎯 Best For</h4>
             <p>When citation quality matters most, for cross-model verification, or when you need fast results with good accuracy.</p>
         </div>
     </div>
@@ -638,7 +656,7 @@
     <!-- Slide 11: Head-to-Head American Comparison -->
     <div class="slide">
         <span class="slide-number">11 / 24</span>
-        <h2>American LLMs: What Each Does Best</h2>
+        <h2>🇺🇸 American LLMs: What Each Does Best</h2>
 
         <table class="comparison-table">
             <tr>
@@ -697,7 +715,7 @@
     <!-- Slide 12: What American LLMs Can't Do Well -->
     <div class="slide">
         <span class="slide-number">12 / 24</span>
-        <h2>What None of Them Can Do Well (Yet)</h2>
+        <h2>🚫 What None of Them Can Do Well (Yet)</h2>
 
         <div class="warning-box">
             <h4>1. Hallucination Remains Real</h4>
@@ -729,7 +747,7 @@
     <!-- Slide 13: Non-American LLMs Overview -->
     <div class="slide">
         <span class="slide-number">13 / 24</span>
-        <h2>Non-American LLMs: The Landscape</h2>
+        <h2>🌐 Non-American LLMs: The Landscape</h2>
 
         <div class="highlight-box">
             <h4>Fundamental Difference</h4>
@@ -763,7 +781,7 @@
     <!-- Slide 14: Mistral Deep Research -->
     <div class="slide">
         <span class="slide-number">14 / 24</span>
-        <h2>Mistral (France) - Le Chat Deep Research</h2>
+        <h2>🇫🇷 Mistral - Le Chat Deep Research</h2>
         <p style="color: #666; font-style: italic;">The European sovereign alternative</p>
 
         <div class="tool-section">
@@ -813,7 +831,7 @@
     <!-- Slide 15: DeepSeek -->
     <div class="slide">
         <span class="slide-number">15 / 24</span>
-        <h2>DeepSeek (China) - The Infrastructure Play</h2>
+        <h2>💻 DeepSeek - The Infrastructure Play</h2>
         <p style="color: #666; font-style: italic;">No consumer product, but most disruptive economics</p>
 
         <div class="tool-section">
@@ -858,7 +876,7 @@
     <!-- Slide 16: Qwen -->
     <div class="slide">
         <span class="slide-number">16 / 24</span>
-        <h2>Alibaba Qwen (China) - The Quiet Giant</h2>
+        <h2>🐘 Alibaba Qwen - The Quiet Giant</h2>
 
         <div class="tool-section">
             <h3>Most Prolific Chinese Model Family</h3>
@@ -881,7 +899,7 @@
 
         <div class="feature-grid">
             <div class="feature-card">
-                <h4>Best For</h4>
+                <h4>🎯 Best For</h4>
                 <ul>
                     <li>Long document analysis</li>
                     <li>Local/air-gapped deployment</li>
@@ -903,7 +921,7 @@
     <!-- Slide 17: Kimi -->
     <div class="slide">
         <span class="slide-number">17 / 24</span>
-        <h2>Moonshot AI / Kimi (China) - The Agentic Researcher</h2>
+        <h2>🤖 Kimi - The Agentic Researcher</h2>
 
         <div class="tool-section">
             <h3>Most "Research-Oriented" Chinese Model</h3>
@@ -987,7 +1005,7 @@
     <!-- Slide 19: Non-American Comparison -->
     <div class="slide">
         <span class="slide-number">19 / 24</span>
-        <h2>Non-American LLMs: What Each Does Best</h2>
+        <h2>🌏 Non-American LLMs: What Each Does Best</h2>
 
         <table class="comparison-table">
             <tr>
@@ -1073,7 +1091,7 @@
     <!-- Slide 21: Practical Combinations -->
     <div class="slide">
         <span class="slide-number">21 / 24</span>
-        <h2>Practical Workflow Combinations</h2>
+        <h2>🔧 Practical Workflow Combinations</h2>
 
         <div class="tool-section">
             <h3>For Academic Research</h3>
@@ -1115,7 +1133,7 @@
     <!-- Slide 22: Cost Considerations -->
     <div class="slide">
         <span class="slide-number">22 / 24</span>
-        <h2>Cost Reality Check</h2>
+        <h2>💸 Cost Reality Check</h2>
 
         <div class="tool-section">
             <h3>Monthly Costs for Full Access</h3>
@@ -1178,7 +1196,7 @@
     <!-- Slide 23: Key Takeaways -->
     <div class="slide">
         <span class="slide-number">23 / 24</span>
-        <h2>Key Takeaways for Graduate Students</h2>
+        <h2>🎓 Key Takeaways for Graduate Students</h2>
 
         <div class="feature-grid">
             <div class="feature-card">
@@ -1242,7 +1260,7 @@
     <!-- Slide 24: Conclusion -->
     <div class="slide">
         <span class="slide-number">24 / 24</span>
-        <h2>The Bottom Line</h2>
+        <h2>🎯 The Bottom Line</h2>
 
         <div class="highlight-box">
             <h4>For Your Research Workflow</h4>
