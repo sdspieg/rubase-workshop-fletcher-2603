@@ -231,6 +231,76 @@ response = requests.get('https://sdspieg.github.io/rubase-workshop-fletcher-2603
 print(f"Status: {response.status_code}")
 ```
 
+## Slide Presentation Issues
+
+### Content Not Fitting on Screen
+- **Problem**: Content overflows, requires scrolling, poor screen real estate usage
+- **Solution**:
+  1. Increase slide dimensions: `width: 95%`, `height: 92vh`
+  2. Reduce padding: `padding: 35px 45px` instead of `50px 60px`
+  3. Decrease font sizes:
+     - h1: `2em` instead of `2.2em`
+     - h2: `1.4em` instead of `1.6em`
+     - p: `0.9em` instead of `0.95em`
+     - li: `0.88em` with `line-height: 1.4`
+  4. Tighten margins throughout
+  5. Use grid with smaller gaps: `gap: 12px` instead of `15px`
+
+### Title Slide Illegibility
+- **Problem**: Title text hard to read on background
+- **Solution**:
+  1. Use high contrast colors
+  2. Add text shadows: `text-shadow: 0 3px 6px rgba(0,0,0,0.5)`
+  3. Ensure sufficient size: `font-size: 2.8em` for main title
+
+### White Background in Dark Theme
+- **Problem**: Slides have white background while body has dark gradient
+- **Solution**: Match slide background to theme
+```css
+/* Wrong */
+.slide {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+/* Right - Elegant Dark Blue */
+.slide {
+    background: linear-gradient(135deg, #1a2a4a 0%, #243655 100%);
+    border: 1px solid rgba(100, 150, 200, 0.3);
+}
+```
+
+### Screaming vs Elegant Colors
+- **Problem**: Bright neon colors (#00ffff, #00ff7f) too harsh
+- **Solution**: Use muted, elegant tones
+  - Sky blue: #87ceeb (instead of cyan #00ffff)
+  - Light blue: #7db8da (instead of green #00ff7f)
+  - Soft gray-blue: #c0d4e0 (for body text)
+  - Teal accents: #4a7c8c → #5a8c9c (for buttons)
+
+### Missing Navigation Buttons
+- **Problem**: Inconsistent navigation across presentations
+- **Solution**: All presentations should have:
+  - 🏠 Home button → `../../index.html`
+  - 📚 Module/Resources button → `index.html`
+  - ← Previous and Next → buttons
+
+## Workshop Philosophy
+
+### "Teaching to Fish" Approach
+**Key Principle**: The workshop provides scripts and tools, BUT the main goal is teaching YOU how to use CLI tools independently.
+
+**Example**: Ottoman Bank Case Study
+- Instead of just providing data, we show HOW to:
+  1. Query OpenAlex with specific terms
+  2. Understand the importance of quotes in searches (21,388 vs 511 results)
+  3. Build your own data collection pipelines
+  4. Analyze and process results
+
+**The Real Value**:
+- Not the scripts themselves, but understanding how to modify them
+- Not the specific data, but knowing how to get your own
+- Not following instructions, but learning to give instructions to CLI tools
+
 ## Remember: The Three Golden Rules
 
 1. **ALWAYS VERIFY** - Test on live site, not just local files
