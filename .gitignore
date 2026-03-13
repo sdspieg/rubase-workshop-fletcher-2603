@@ -4,4 +4,6 @@ package.json
 screenshots/
 test_*.js
 *.log
-.DS_Store
+.DS_Store# Large data files (too big for GitHub)
+Day3_Workshop_Package/ottoman_bank_ALL.json
+Day3_Workshop_Package/ottoman_bank_chunks_ALL.json

@@ -89,13 +89,108 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .visual-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            flex: 1;
+        /* Content Layout */
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 300px 1fr 350px;
+            gap: 30px;
+            height: calc(100vh - 180px);
             padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: rgba(20, 40, 71, 0.4);
+            border: 2px solid var(--bright-green);
+            border-radius: 15px;
+            padding: 25px;
+            overflow-y: auto;
+        }
+
+        .sidebar h3 {
+            color: var(--bright-green);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-item {
+            display: block;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            background: rgba(0, 255, 127, 0.05);
+            border: 1px solid var(--bright-green);
+            border-radius: 8px;
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .sidebar-item:hover {
+            background: rgba(0, 255, 127, 0.15);
+            color: var(--bright-white);
+            transform: translateX(5px);
+        }
+
+        .sidebar-item.active {
+            background: rgba(0, 255, 127, 0.2);
+            color: var(--bright-green);
+            font-weight: 600;
+        }
+
+        .sidebar-item.highlight {
+            background: rgba(0, 255, 255, 0.1);
+            border-color: var(--bright-cyan);
+            color: var(--bright-cyan);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: rgba(20, 40, 71, 0.3);
+            border: 2px solid var(--bright-cyan);
+            border-radius: 15px;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        /* Resources */
+        .resources {
+            background: rgba(20, 40, 71, 0.4);
+            border: 2px solid var(--bright-purple);
+            border-radius: 15px;
+            padding: 25px;
+            overflow-y: auto;
+        }
+
+        .resources h3 {
+            color: var(--bright-purple);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .resource-item {
+            display: block;
+            padding: 10px 15px;
+            margin-bottom: 12px;
+            background: rgba(147, 112, 219, 0.1);
+            border: 1px solid var(--bright-purple);
+            border-radius: 8px;
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .resource-item:hover {
+            background: rgba(147, 112, 219, 0.2);
+            color: var(--bright-white);
         }
 
         .top-buttons {
@@ -134,7 +229,6 @@
             border-radius: 20px;
             padding: 50px;
             text-align: center;
-            max-width: 600px;
         }
 
         .coming-soon h2 {
@@ -147,6 +241,35 @@
             color: var(--light-gray);
             font-size: 1.3rem;
             line-height: 1.6;
+        }
+
+        .available-banner {
+            background: linear-gradient(135deg, rgba(0,255,255,0.2), rgba(0,255,255,0.1));
+            border: 2px solid var(--bright-cyan);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .available-banner p {
+            color: var(--bright-cyan);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .available-banner a {
+            color: var(--bright-cyan);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 1200px) {
+            .content-wrapper {
+                grid-template-columns: 250px 1fr;
+            }
+            .resources {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -168,17 +291,48 @@
                 <span style="color: var(--bright-green); font-size: 1.4rem; font-weight: 700;">From Frameworks to Findings</span>
             </div>
 
-            <div class="visual-container">
-                <div class="coming-soon">
-                    <h2>🔒 Available Friday</h2>
-                    <p>This module will be unlocked on Friday, March 14</p>
-                    <p style="margin-top: 20px; font-size: 1.1rem;">Topics will include:</p>
-                    <ul style="text-align: left; list-style: none; margin-top: 20px;">
-                        <li style="margin-bottom: 10px;">▸ LLM-powered text classification</li>
-                        <li style="margin-bottom: 10px;">▸ Automated corpus annotation</li>
-                        <li style="margin-bottom: 10px;">▸ Data visualization techniques</li>
-                        <li style="margin-bottom: 10px;">▸ Creating research outputs</li>
-                    </ul>
+            <div class="content-wrapper">
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <h3>Module Contents</h3>
+                    <a href="#overview" class="sidebar-item active">Module Overview</a>
+                    <a href="ottoman-bank-case-study.html" class="sidebar-item highlight">📊 Ottoman Bank Case Study</a>
+                    <a href="#taxonomy" class="sidebar-item">Taxonomy Development</a>
+                    <a href="#llm-analysis" class="sidebar-item">LLM Analysis Methods</a>
+                    <a href="#visualization" class="sidebar-item">Data Visualization</a>
+                    <a href="#exercises" class="sidebar-item">Hands-On Exercises</a>
+                </div>
+
+                <!-- Main Content -->
+                <div class="main-content">
+                    <div class="coming-soon">
+                        <h2>🔒 Full Module Available Friday</h2>
+                        <p>The complete module will be unlocked on Friday, March 14</p>
+                        <p style="margin-top: 20px; font-size: 1.1rem;">Topics will include:</p>
+                        <ul style="text-align: left; list-style: none; margin-top: 20px;">
+                            <li style="margin-bottom: 10px;">▸ LLM-powered text classification</li>
+                            <li style="margin-bottom: 10px;">▸ Automated corpus annotation</li>
+                            <li style="margin-bottom: 10px;">▸ Multi-dimensional taxonomy development</li>
+                            <li style="margin-bottom: 10px;">▸ Data visualization techniques</li>
+                            <li style="margin-bottom: 10px;">▸ Creating research outputs</li>
+                        </ul>
+
+                        <div class="available-banner">
+                            <p>🎉 The <a href="ottoman-bank-case-study.html">Ottoman Bank Case Study</a> is now available!</p>
+                            <p style="font-size: 1rem; margin-top: 10px;">Explore the complete pipeline from OpenAlex discovery to LLM analysis</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resources -->
+                <div class="resources">
+                    <h3>Resources</h3>
+                    <a href="ottoman-bank-case-study.html" class="resource-item">📊 Ottoman Bank Case Study Slides</a>
+                    <a href="../../Day3_Workshop_Package/OTTOMAN_BANK_COMPLETE_GUIDE.md" class="resource-item" target="_blank">📖 Complete Ottoman Bank Guide</a>
+                    <a href="../../Day3_Workshop_Package/fetch_openalex.py" class="resource-item" target="_blank">🐍 OpenAlex Fetcher Script</a>
+                    <a href="../../Day3_Workshop_Package/ottoman_bank_taxonomy.tsv" class="resource-item" target="_blank">📋 Ottoman Bank Taxonomy</a>
+                    <a href="../../Day3_Workshop_Package/analyze_downloaded_content.py" class="resource-item" target="_blank">📝 Content Analysis Script</a>
+                    <a href="#" class="resource-item">📚 Additional Resources (Coming)</a>
                 </div>
             </div>
         </div>

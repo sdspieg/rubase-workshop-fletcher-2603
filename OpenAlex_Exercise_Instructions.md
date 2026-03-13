@@ -81,9 +81,33 @@ You'll search for academic research in YOUR field of interest, then analyze the 
 4. **Use AND to narrow**: `"broad topic" AND "specific aspect"`
 5. **Consider synonyms**: Include alternative terms for the same concept
 
-### API Endpoint
+#### ⚠️ CRITICAL: Quotes Matter for Exact Phrases!
+
+When using full-text search (`filter=fulltext.search:`), quotes determine the search behavior:
+
+**WITHOUT quotes**: `fulltext.search:Ottoman Bank`
+- Searches for Ottoman OR Bank anywhere in the text
+- Returns papers with either word (21,388 results)
+
+**WITH quotes**: `fulltext.search:"Ottoman Bank"`
+- Searches for the exact phrase "Ottoman Bank"
+- Returns only papers with these words together (513 results)
+
+This applies to all search types in OpenAlex:
+- `search=` (title/abstract search)
+- `filter=fulltext.search:` (full-text search)
+- `filter=title.search:` (title-only search)
+
+### API Endpoints
 ```
+# Basic search (titles/abstracts):
 https://api.openalex.org/works?search=YOUR_QUERY
+
+# Full-text search:
+https://api.openalex.org/works?filter=fulltext.search:YOUR_QUERY
+
+# With exact phrase (note the quotes):
+https://api.openalex.org/works?filter=fulltext.search:"exact phrase"
 ```
 
 ## Part 2: Running the Exercise
