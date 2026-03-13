@@ -502,12 +502,3 @@ li {
         grid-template-columns: 1fr;
     }
 }
-
-/* Basic image styling for any slide images */
-.slide img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    object-fit: contain;
-}
