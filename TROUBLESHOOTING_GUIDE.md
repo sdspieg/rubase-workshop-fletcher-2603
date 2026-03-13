@@ -328,6 +328,24 @@ print(f"Status: {response.status_code}")
        # Verify content, capture screenshots, test functionality
    ```
 
+## Lessons Learned (For Us - Not Students)
+
+### Color Contrast vs Luminance Contrast
+- **Issue**: Colors can have good luminance contrast ratios but poor visual distinction
+- **Example**: Sky blue (#87ceeb) on dark blue (#1a2a4a) = 8.18:1 ratio (passes WCAG) but still hard to read
+- **Solution**: Use colors with different hues, not just different brightness levels
+- **Better approach**: White/very light colors on dark backgrounds for maximum readability
+
+### Dataset Confusion
+- **Issue**: Using wrong dataset (21,000+ papers from unquoted search vs 511 from quoted)
+- **Solution**: Always verify data sources and search parameters before analysis
+- **Impact**: Completely different conclusions and statistics
+
+### Verification Methodology
+- **Not enough**: Just checking if changes were made
+- **Required**: Visual verification of EVERY slide on live site
+- **Tool**: Playwright scripts to systematically check each element
+
 ## Remember: The Three Golden Rules
 
 1. **ALWAYS VERIFY** - Test on live site, not just local files
