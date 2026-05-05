@@ -458,6 +458,31 @@
         .slide.active {
             position: relative !important;
         }
+        /* HCSS_FORCE_16_9 — uniform 16:9 slide canvas centered in viewport.
+           Every active slide gets the same dimensions regardless of per-deck CSS.
+           No transform — the slide IS sized to fit viewport at 16:9. */
+        .slide.active {
+            position: fixed !important;
+            inset: 0 !important;
+            margin: auto !important;
+            width: min(96vw, calc(96vh * 16 / 9)) !important;
+            height: min(96vh, calc(96vw * 9 / 16)) !important;
+            aspect-ratio: 16 / 9 !important;
+            max-width: none !important;
+            max-height: none !important;
+            z-index: 50 !important;
+            overflow: hidden !important;
+            box-sizing: border-box !important;
+            transform: none !important;
+            transform-origin: center center !important;
+        }
+        /* Disable enter-animation transforms that fight our positioning */
+        @keyframes fadeIn { from {} to {} }
+        @keyframes slideIn { from {} to {} }
+        @keyframes slideInLeft { from {} to {} }
+        @keyframes slideInRight { from {} to {} }
+        .slide.active { animation: none !important; }
+
 
 
 
@@ -616,6 +641,7 @@
 
     <!-- HCSS_FIX_INACTIVE_HIDE_2026_05_05 -->
     <!-- HCSS_FINAL_CLEANUP_2026_05_05 -->
+    <!-- HCSS_FORCE_16_9_2026_05_05 -->
 </head>
 <body>
     <button class="hcss-fs-chip" onclick="toggleHcssFullscreen()" title="Toggle fullscreen (F or Esc)">⛶ Fullscreen</button>
