@@ -458,6 +458,91 @@
     <!-- HCSS_FIX_INACTIVE_HIDE_2026_05_05 -->
     <!-- HCSS_FINAL_CLEANUP_2026_05_05 -->
     <!-- HCSS_FORCE_16_9_2026_05_05 -->
+    <!-- HCSS_INNER_FIT_2026_05_05 -->
+    <script>
+(function(){
+  if (window._hcssInnerFitBound) return;
+  window._hcssInnerFitBound = true;
+  function fit(){
+    const a = document.querySelector('.slide.active');
+    if (!a) return;
+    // Reset previous wrapper transform
+    a.style.removeProperty('--inner-scale');
+    // If slide content overflows the 16:9 box, scale content via CSS variable
+    const ch = a.scrollHeight, cw = a.scrollWidth;
+    const bh = a.clientHeight, bw = a.clientWidth;
+    if (ch <= bh + 4 && cw <= bw + 4) return; // fits, no scale needed
+    const s = Math.min(bw / cw, bh / ch, 1);
+    if (s >= 1) return;
+    // Apply via CSS — wrap children: set transform: scale(s) on a wrapper-equivalent.
+    // Simpler: set transform on the active slide INNER content wrapper.
+    // Strategy: select all children and apply scale via inline style on a virtual wrapper using --inner-scale
+    a.style.setProperty('--inner-scale', s.toFixed(3));
+    // Apply scale to all direct children via inline transform-origin top-left
+    Array.from(a.children).forEach(child => {
+      child.style.transformOrigin = 'top left';
+      child.style.transform = `scale(${s})`;
+      child.style.width = `${100/s}%`;
+      child.style.height = `${100/s}%`;
+    });
+  }
+  let t;
+  function fitDebounced(){ clearTimeout(t); t = setTimeout(fit, 80); }
+  window.addEventListener('resize', fitDebounced);
+  if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', () => setTimeout(fit, 200));
+  } else {
+    setTimeout(fit, 200);
+  }
+  setTimeout(fit, 800);
+  if (document.body) {
+    new MutationObserver(fitDebounced).observe(document.body, { attributes: true, subtree: true, attributeFilter: ['class'] });
+  }
+})();
+</script>
+    <!-- HCSS_INNER_FIT_V2_2026_05_05 -->
+    <script>
+(function(){
+  if (window._hcssInnerFitV2) return;
+  window._hcssInnerFitV2 = true;
+  function fit(){
+    document.querySelectorAll('.slide').forEach(s => {
+      // First, RESET any scale on children (whether active or not)
+      Array.from(s.children).forEach(c => { c.style.removeProperty('transform'); c.style.removeProperty('transform-origin'); c.style.removeProperty('width'); c.style.removeProperty('height'); });
+    });
+    const a = document.querySelector('.slide.active');
+    if (!a) return;
+    const ch = a.scrollHeight, cw = a.scrollWidth;
+    const bh = a.clientHeight, bw = a.clientWidth;
+    const s = Math.min(bw / cw, bh / ch, 1);
+    if (s >= 1) return;
+    Array.from(a.children).forEach(child => {
+      child.style.transformOrigin = 'top left';
+      child.style.transform = 'scale(' + s.toFixed(4) + ')';
+      child.style.width = (100/s).toFixed(2) + '%';
+    });
+  }
+  // Fire often: on resize, on DOM changes, and at multiple post-nav timestamps
+  function schedule(){ requestAnimationFrame(() => requestAnimationFrame(fit)); setTimeout(fit, 100); setTimeout(fit, 350); }
+  window.addEventListener('resize', schedule);
+  if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', schedule);
+  } else {
+    schedule();
+  }
+  setTimeout(schedule, 800);
+  // Hook every nav button click
+  document.addEventListener('click', e => {
+    if (e.target.closest && e.target.closest('.hcss-pm-prev, .hcss-pm-next, .hcss-pm-dot, .nav-arrow, .nav-btn, .prev-btn, .next-btn, [class*="nav-"]')) {
+      schedule();
+    }
+  }, true);
+  // Also class mutations
+  if (document.body) {
+    new MutationObserver(schedule).observe(document.body, { attributes: true, subtree: true, attributeFilter: ['class'] });
+  }
+})();
+</script>
 </head>
 <body>
     <button class="hcss-fs-chip" onclick="toggleHcssFullscreen()" title="Toggle fullscreen (F or Esc)">⛶ Fullscreen</button>
