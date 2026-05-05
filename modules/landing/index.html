@@ -461,6 +461,26 @@
         /* HCSS_FIX_INACTIVE_HIDE — force-hide inactive slides regardless of
            per-deck class overrides (e.g. .title-slide that sets display:flex). */
         .slide:not(.active) { display: none !important; }
+        /* HCSS_FINAL_CLEANUP — kill ALL legacy nav and force slide-fit to honour */
+        /* Hide legacy navigation regardless of class name */
+        [class*="nav-controls"]:not(.hcss-progress-monitor),
+        [class*="nav-buttons"], [class*="nav-arrows"], [class*="slide-arrows"],
+        [class*="slide-nav"], [class*="deck-nav"], [class*="slide-controls"],
+        [class*="prev-arrow"]:not(.hcss-pm-prev), [class*="next-arrow"]:not(.hcss-pm-next),
+        .arrow-left, .arrow-right, .nav-prev, .nav-next, .deck-prev, .deck-next,
+        button.prev, button.next, button[class*="prev-"], button[class*="next-"],
+        .slide-arrow, .slide-arrow-left, .slide-arrow-right,
+        .nav-arrow-left, .nav-arrow-right,
+        .home-link, .back-link, .return-link {
+            display: none !important;
+        }
+        /* Force slide-fit transformation to actually take effect: kill any
+           legacy max-height/overflow:hidden on the slide that pre-empts our
+           overflow:visible + height:auto + transform:scale */
+        .slide.active {
+            position: relative !important;
+        }
+
 
 
 
