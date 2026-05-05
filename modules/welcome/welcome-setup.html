@@ -622,6 +622,10 @@
         /* Always ensure chips sit above the standardized progress monitor */
         .hcss-fs-chip, .hcss-home-chip { z-index: 99999; }
         .hcss-progress-monitor { z-index: 99998; }
+        /* HCSS_FIX_INACTIVE_HIDE — force-hide inactive slides regardless of
+           per-deck class overrides (e.g. .title-slide that sets display:flex). */
+        .slide:not(.active) { display: none !important; }
+
 
 
 
