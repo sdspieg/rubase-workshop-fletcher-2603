@@ -866,6 +866,7 @@
   }
   // Fire often: on resize, on DOM changes, and at multiple post-nav timestamps
   function schedule(){ requestAnimationFrame(() => requestAnimationFrame(fit)); setTimeout(fit, 100); setTimeout(fit, 350); }
+  window.runHcssInnerFit = fit;
   window.addEventListener('resize', schedule);
   if (document.readyState === 'loading') {
     window.addEventListener('DOMContentLoaded', schedule);
