@@ -820,6 +820,15 @@
         .slide.active {
             position: relative !important;
         }
+        /* HCSS_FIXED_VIEWPORT_SLIDE — pin active slide at viewport center; transform scales it to fit */
+        .slide.active {
+            position: fixed !important;
+            top: 50% !important;
+            left: 50% !important;
+            margin: 0 !important;
+            z-index: 50 !important;
+        }
+
 
 
 
