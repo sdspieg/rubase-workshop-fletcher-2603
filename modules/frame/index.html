@@ -1160,9 +1160,7 @@
     }
   }, true);
   // Also class mutations
-  if (document.body) {
-    new MutationObserver(schedule).observe(document.body, { attributes: true, subtree: true, attributeFilter: ['class'] });
-  }
+  // MutationObserver removed — caused reflow loop in headless probe
 })();
 </script>
 </head>
