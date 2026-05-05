@@ -874,7 +874,7 @@
       const nat = naturals.get(slide);
       if (!nat) return;
       const scale = Math.min(availW / nat.w, availH / nat.h, 1);
-      slide.style.transformOrigin = 'center top';
+      slide.style.transformOrigin = 'center center';
       slide.style.transform = scale < 1 ? `scale(${scale})` : '';
     });
   }
